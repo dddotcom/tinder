@@ -1,0 +1,18 @@
+body {
+  /*text-align: center;*/
+}
+
+.carousel {
+  width: 50em;
+  margin: 3em auto;
+}
+
+.carousel-item img {
+  width: 50em;
+  height: 35em;
+}
+
+.carousel-caption {
+  color: black;
+  top: 0;
+}
