@@ -7,6 +7,10 @@ router.get('/', function(req, res){
   res.render('potentials/index');
 });
 
+router.get('/match/:id/:potentialId', function(req, res){
+  res.render('potentials/match');
+});
+
 router.get('/:id', function(req, res){
   res.render('potentials/show');
 });
