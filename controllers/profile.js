@@ -4,9 +4,9 @@ var isLoggedIn = require("../middleware/isLoggedIn");
 var passport = require('../config/passportConfig');
 var router = express.Router();
 
-router.get('/:id', isLoggedIn, function(req, res){
+router.get('/', isLoggedIn, function(req, res){
   db.user.find({
-    where: {id: req.params.id},
+    where: {id: req.user.id},
     include: [db.interest, db.profile_pic]
   })
   .then(function(user){
@@ -18,9 +18,9 @@ router.get('/:id', isLoggedIn, function(req, res){
   });
 });
 
-router.get('/:id/edit', isLoggedIn, function(req, res){
+router.get('/edit', isLoggedIn, function(req, res){
   db.user.find({
-    where: {id: req.params.id},
+    where: {id: req.user.id},
     include: [db.interest, db.profile_pic]
   })
   .then(function(user){
@@ -32,8 +32,32 @@ router.get('/:id/edit', isLoggedIn, function(req, res){
   });
 });
 
-router.get('/:id/settings', isLoggedIn, function(req, res){
+router.get('/settings', isLoggedIn, function(req, res){
   res.render('profile/settings');
-})
+});
+
+router.put('/settings', isLoggedIn, function(req, res){
+  console.log("you are updating something!");
+  db.user.update({
+    interestedIn: req.body.interestedIn
+  }, {
+    where: {id: req.user.id}
+  }).then(function(userUpdate){
+    res.send({message: 'successful update of interestedIn'});
+  });
+});
+
+router.put('/', isLoggedIn, function(req, res){
+  console.log("you are updating something!");
+  db.user.update({
+    about: req.body.about,
+    work: req.body.work,
+    school: req.body.school
+  }, {
+    where: {id: req.user.id}
+  }).then(function(userUpdated){
+    res.send({message: 'successful update of user profile'});
+  });
+});
 
 module.exports = router;
