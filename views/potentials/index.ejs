@@ -7,30 +7,47 @@
 </div>
 <br>
 <div class="container">
-  <% potentialUsers.forEach(function(potentialUser){ %>
-    <a href="/potentials/<%=potentialUser.id%>"><img src=<%=potentialUser.profile_pics[0].url%>></a>
+  <div class="row">
+    <div class="col-xs-12 potentials">
+      <% var z = 0; potentialUsers.forEach(function(potentialUser){ %>
+        <div class="potential-img potential-user" id="<%=potentialUser.id%>" style="z-index:<%=z%>;">
+          <a href="/potentials/<%=potentialUser.id%>"><img src=<%=potentialUser.profile_pics[0].url%>></a>
 
-    <p><strong><%=potentialUser.name%></strong>, <%=potentialUser.age%></p>
-    <% if(potentialUser.school){ %>
-      <p>Studies at <%= potentialUser.school %> </p>
-    <% } %>
+          <p><strong><%=potentialUser.name%></strong>, <%=potentialUser.age%></p>
+          <% if(potentialUser.school){ %>
+            <p>Studies at <%= potentialUser.school %> </p>
+          <% } %>
+          <% if(potentialUser.work){ %>
+            <p>Works at <%= potentialUser.work %> </p>
+          <% } %>
+          <% if(!potentialUser.work && !potentialUser.school){ %>
+            <p>Does nothing</p>
+          <% } %>
+        </div>
+      <% z+= 10; }); %>
+    </div>
+  </div>
 
-    <% if(potentialUser.work){ %>
-      <p>Works at <%= potentialUser.work %> </p>
-    <% } %>
+  <div class="row">
+    <div class="col-xs-12 tinder-controls">
 
-  <% }); %>
+      <a href="#" class="btn btn-primary">
+        <i class="fa fa-repeat fa-2x" aria-hidden="true"></i>
+      </a>
 
-  <a href="#" class="btn btn-primary">
-    <i class="fa fa-repeat fa-2x" aria-hidden="true"></i>
-  </a>
-  <a href="#" class="btn btn-primary">
-    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-  </a>
-  <a href="/potentials/match/<%=currentUser.id%>/2" class="btn btn-primary">
-    <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
-  </a>
-  <a href="/potentials/match/<%=currentUser.id%>/2" class="btn btn-primary">
-    <i class="fa fa-star fa-2x" aria-hidden="true"></i>
-  </a>
+      <button class="btn btn-primary btn-dislike">
+        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+      </button>
+
+      <button class="btn btn-primary btn-like">
+        <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+      </button>
+
+      <button class="btn btn-primary btn-superlike">
+        <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+      </button>
+
+    </div>
+  </div>
+
 </div>

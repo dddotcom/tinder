@@ -37,4 +37,73 @@ router.get('/:id', isLoggedIn, function(req, res){
   });
 });
 
+router.post('/dislike/:potentialId', isLoggedIn, function(req, res){
+  db.dislike.findOrCreate({
+    where: {
+      userId: req.user.id,
+      userIdDisliked: req.params.potentialId
+    }
+  }).spread(function(dislike, wasCreated){
+    if(wasCreated){
+      //good
+      req.flash("success", "Dislike added for " + dislike.userId + " : " + dislike.userIdDisliked);
+      res.send({message: 'successful dislike'});
+    } else {
+      req.flash("error", "you've already disliked this guy");
+      res.send({message: 'unsuccessful dislike'});
+    }
+  }).catch(function(err){
+    req.flash("error", err.message);
+    res.redirect("/potentials");
+  });
+});
+
+router.post('/like/:potentialId', isLoggedIn, function(req, res){
+  db.like.findOrCreate({
+    where: {
+      userId: req.user.id,
+      userIdLiked: req.params.potentialId
+    },
+    defaults: {
+      isSuperLike: false
+    }
+  }).spread(function(like, wasCreated){
+    if(wasCreated){
+      //good
+      req.flash("success", "Like added for " + like.userId + " : " + like.userIdLiked);
+      res.send({message: 'successful like'});
+    } else {
+      req.flash("error", "you've already liked this guy");
+      res.send({message: 'unsuccessful like'});
+    }
+  }).catch(function(err){
+    req.flash("error", err.message);
+    res.redirect("/potentials");
+  });
+});
+
+router.post('/superlike/:potentialId', isLoggedIn, function(req, res){
+  db.like.findOrCreate({
+    where: {
+      userId: req.user.id,
+      userIdLiked: req.params.potentialId
+    },
+    defaults: {
+      isSuperLike: true
+    }
+  }).spread(function(like, wasCreated){
+    if(wasCreated){
+      //good
+      req.flash("success", "SuperLike added for " + like.userId + " : " + like.userIdLiked);
+      res.send({message: 'successful superlike'});
+    } else {
+      req.flash("error", "you've already superliked this guy");
+      res.send({message: 'unsuccessful superlike'});
+    }
+  }).catch(function(err){
+    req.flash("error", err.message);
+    res.redirect("/potentials");
+  });
+});
+
 module.exports = router;
