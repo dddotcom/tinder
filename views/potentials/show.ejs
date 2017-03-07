@@ -1,5 +1,6 @@
 <div class="container">
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="potential-user" id="<%=potentialUser.id%>"></div>
     <ol class="carousel-indicators">
       <% var slideNum = 0; %>
           <li data-target="#carouselExampleIndicators" data-slide-to="<%=slideNum%>" class="active"></li>
@@ -11,7 +12,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       <div class="carousel-item active">
-        <img class="d-block img-fluid" src="<%= potentialUser.profile_pics[0].url %>">
+        <img class="d-block img-fluid potential" src="<%= potentialUser.profile_pics[0].url %>">
       </div>
       <% if(potentialUser.profile_pics.length > 1){ %>
         <% for(var i = 1; i < potentialUser.profile_pics.length; i++){ %>
@@ -56,13 +57,17 @@
 </div>
 
 <div class="container">
-  <a href="/potentials" class="btn btn-primary">
+
+  <button class="btn btn-primary btn-dislike">
     <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-  </a>
-  <a href="/potentials/match/1/<%=potentialUser.id%>" class="btn btn-primary">
+  </button>
+
+  <button class="btn btn-primary btn-superlike">
     <i class="fa fa-star fa-2x" aria-hidden="true"></i>
-  </a>
-  <a href="/potentials/match/1/<%=potentialUser.id%>" class="btn btn-primary">
+  </button>
+
+  <button class="btn btn-primary btn-like">
     <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
-  </a>
+  </button>
+
 </div>

@@ -12,7 +12,35 @@ body {
   height: 35em;
 }
 
+.carousel-item .potential {
+  height: 500px;
+  width: 500px;
+}
+
 .carousel-caption {
   color: black;
   top: 0;
+}
+
+.potential-img {
+  position: absolute;
+  top:0px;
+  left: 0px;
+  background-color: white;
+  border: 2px black solid;
+}
+
+.potential-img img{
+    height: 400px;
+    width: 400px;
+}
+
+.tinder-controls {
+  position: relative;
+  top: 600px;
+}
+
+.current-user {
+  position: relative;
+  top: 700px;
 }
