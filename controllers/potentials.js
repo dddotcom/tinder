@@ -2,20 +2,51 @@ var express = require('express');
 var isLoggedIn = require("../middleware/isLoggedIn");
 var db = require('../models');
 var passport = require('../config/passportConfig');
+var async = require('async');
 var router = express.Router();
 
 router.get('/', isLoggedIn, function(req, res){
   //TODO: and not in like or dislike table
+  //find all cats that don't have dislikes
+  //find all cats that don't have likes
+  //otherwise raw sql query w/ seqeulize
+
   var interestedIn = req.user.interestedIn;
-  db.user.findAll({
-    where: {animalId: interestedIn},
-    include: [db.profile_pic]
-  })
-  .then(function(potentialUsers){
-    //TODO: show only users that have not been put into like or dislike table
-    res.render('potentials/index', {potentialUsers: potentialUsers});
-  })
-  .catch(function(error){
+  var seenIds = [req.user.id];
+
+  db.like.findAll({
+    where: {userId: req.user.id}
+  }).then(function(likes){
+    likes.forEach(function(like){
+      seenIds.push(like.userIdLiked);
+    })
+    db.dislike.findAll({
+      where: {userId: req.user.id}
+    }).then(function(dislikes){
+      dislikes.forEach(function(dislike){
+        seenIds.push(dislike.userIdDisliked);
+      }) //end of forEach
+      console.log("seen ids", seenIds);
+      db.user.findAll({
+        where: {
+          animalId: interestedIn,
+          id: {
+            $notIn: seenIds,
+          }
+        },
+        include: [db.profile_pic]
+      })
+      .then(function(potentialUsers){
+        //TODO: show only users that have not been put into like or dislike table
+        res.render('potentials/index', {potentialUsers: potentialUsers});
+      }) //end of then
+      .catch(function(error){
+        res.status(400).send("error");
+      });
+    }).catch(function(error){
+      res.status(400).send("error");
+    });
+  }).catch(function(error){
     res.status(400).send("error");
   });
 });

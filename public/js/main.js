@@ -79,6 +79,14 @@ $(document).ready(function(){
     });
   });
 
+  $(".btn-next").click(function(e){
+    e.preventDefault();
+    var id = findGreatestZindex();
+    $("#" + id).slideUp("slow", function(){
+      $(this).remove();
+    });
+  });
+  
 })
 
 function findGreatestZindex(){
