@@ -1,8 +1,8 @@
 <div class="container">
   <header>
-    <a href="/profile/1" class="btn btn-secondary"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
+    <a href="/profile/<%=currentUser.id%>" class="btn btn-secondary"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
     <a href="#" class="btn btn-danger"><i class="fa fa-tint fa-2x" aria-hidden="true"></i></a>
-    <a href="/chatroom/1" class="btn btn-secondary"><i class="fa fa-weixin fa-2x" aria-hidden="true"></i></a>
+    <a href="/chatroom/<%=currentUser.id%>" class="btn btn-secondary"><i class="fa fa-weixin fa-2x" aria-hidden="true"></i></a>
   </header>
 </div>
 <br>
@@ -27,10 +27,10 @@
   <a href="#" class="btn btn-primary">
     <i class="fa fa-times fa-2x" aria-hidden="true"></i>
   </a>
-  <a href="/potentials/match/1/2" class="btn btn-primary">
+  <a href="/potentials/match/<%=currentUser.id%>/2" class="btn btn-primary">
     <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
   </a>
-  <a href="/potentials/match/1/2" class="btn btn-primary">
+  <a href="/potentials/match/<%=currentUser.id%>/2" class="btn btn-primary">
     <i class="fa fa-star fa-2x" aria-hidden="true"></i>
   </a>
 </div>

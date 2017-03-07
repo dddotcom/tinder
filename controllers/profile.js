@@ -1,9 +1,10 @@
 var express = require('express');
 var db = require('../models');
-// var passport = require('../config/passportConfig');
+var isLoggedIn = require("../middleware/isLoggedIn");
+var passport = require('../config/passportConfig');
 var router = express.Router();
 
-router.get('/:id', function(req, res){
+router.get('/:id', isLoggedIn, function(req, res){
   db.user.find({
     where: {id: req.params.id},
     include: [db.interest, db.profile_pic]
@@ -17,7 +18,7 @@ router.get('/:id', function(req, res){
   });
 });
 
-router.get('/:id/edit', function(req, res){
+router.get('/:id/edit', isLoggedIn, function(req, res){
   db.user.find({
     where: {id: req.params.id},
     include: [db.interest, db.profile_pic]
@@ -31,7 +32,7 @@ router.get('/:id/edit', function(req, res){
   });
 });
 
-router.get('/:id/settings', function(req, res){
+router.get('/:id/settings', isLoggedIn, function(req, res){
   res.render('profile/settings');
 })
 

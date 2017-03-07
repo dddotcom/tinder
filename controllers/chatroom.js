@@ -1,10 +1,11 @@
 var express = require('express');
 var db = require('../models');
 var async = require('async');
-// var passport = require('../config/passportConfig');
+var isLoggedIn = require("../middleware/isLoggedIn");
+var passport = require('../config/passportConfig');
 var router = express.Router();
 
-router.get('/:id', function(req, res){
+router.get('/:id', isLoggedIn, function(req, res){
   //show users that have a match
   var matchUsers = [];
   db.like.findAll({
@@ -38,14 +39,14 @@ router.get('/:id', function(req, res){
   });
 });
 
-router.get('/:id/:potentialId', function(req, res){
+router.get('/:id/:potentialId', isLoggedIn, function(req, res){
   //get chat logs for both
 
   //send them in order of createdAt
   res.render('chatroom/show');
 });
 
-router.post('/:id/:potentialId', function(req, res){
+router.post('/:id/:potentialId', isLoggedIn, function(req, res){
   res.redirect('chatroom/show');
 });
 

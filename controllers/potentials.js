@@ -1,13 +1,12 @@
 var express = require('express');
+var isLoggedIn = require("../middleware/isLoggedIn");
 var db = require('../models');
-// var passport = require('../config/passportConfig');
+var passport = require('../config/passportConfig');
 var router = express.Router();
 
-router.get('/', function(req, res){
-  //current user id = 1
-  //interestedIn = 2
-  //and not in like or dislike table
-  var interestedIn = 2;
+router.get('/', isLoggedIn, function(req, res){
+  //TODO: and not in like or dislike table
+  var interestedIn = req.user.interestedIn;
   db.user.findAll({
     where: {animalId: interestedIn},
     include: [db.profile_pic]
@@ -21,11 +20,11 @@ router.get('/', function(req, res){
   });
 });
 
-router.get('/match/:id/:potentialId', function(req, res){
+router.get('/match/:id/:potentialId', isLoggedIn, function(req, res){
   res.render('potentials/match');
 });
 
-router.get('/:id', function(req, res){
+router.get('/:id', isLoggedIn, function(req, res){
   db.user.find({
     where: {id: req.params.id},
     include: [db.interest, db.profile_pic]

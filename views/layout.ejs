@@ -12,7 +12,19 @@
   </head>
   <body>
     <div class="container">
-      <%- body %>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <% include partials/alerts %>
+
+          <%- body %>
+
+          <br>
+
+          <strong>User Object: </strong><%- JSON.stringify(currentUser) %>
+        </div>
+      </div>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
