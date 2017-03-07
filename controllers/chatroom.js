@@ -1,14 +1,47 @@
 var express = require('express');
-// var db = require('../models');
+var db = require('../models');
+var async = require('async');
 // var passport = require('../config/passportConfig');
 var router = express.Router();
 
 router.get('/:id', function(req, res){
-  // res.send('GET chatroom/index');
-  res.render('chatroom/index');
+  //show users that have a match
+  var matchUsers = [];
+  db.like.findAll({
+    where: {userId: req.params.id},
+  })
+  .then(function(likes){
+    async.forEachSeries(likes, function(like, callback){
+      db.like.find({
+        where: {userId: like.userIdLiked, userIdLiked: req.params.id}
+      })
+      .then(function(match){
+        if(match){
+          db.user.find({
+            where: {id: match.userId},
+            include: [db.profile_pic, db.chat]
+          })
+          .then(function(user){
+            if(user){
+              matchUsers.push(user);
+            }
+            callback(null);
+          });
+        } //end of if(match)
+      }); //end of then
+    }, function(){
+      res.render('chatroom/index', {matches: matchUsers});
+    }); //end of for each series
+  })
+  .catch(function(error){
+    res.status(400).send("error");
+  });
 });
 
 router.get('/:id/:potentialId', function(req, res){
+  //get chat logs for both
+
+  //send them in order of createdAt
   res.render('chatroom/show');
 });
 
