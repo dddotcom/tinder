@@ -11,7 +11,6 @@ router.get('/:id', function(req, res){
     where: {userId: req.params.id},
   })
   .then(function(likes){
-    //TODO: show only users that have not been put into like or dislike table
     async.forEachSeries(likes, function(like, callback){
       db.like.find({
         where: {userId: like.userIdLiked, userIdLiked: req.params.id}
@@ -41,7 +40,6 @@ router.get('/:id', function(req, res){
 
 router.get('/:id/:potentialId', function(req, res){
   //get chat logs for both
-
 
   //send them in order of createdAt
   res.render('chatroom/show');
