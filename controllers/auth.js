@@ -96,4 +96,16 @@ router.post('/signup', function(req, res){
     res.redirect("/");
   });
 
+  //FACEBOOK auth
+  router.get("/facebook", passport.authenticate("facebook", {
+    scope: ["public_profile", "email"]
+  }));
+
+  router.get("/callback/facebook", passport.authenticate("facebook", {
+    successRedirect: "/profile",
+    successFlash: "You logged in with FBOOK",
+    failureRedirect: "/auth/login",
+    failureFlash: "fbook won't log you in"
+  }));
+
 module.exports = router;
