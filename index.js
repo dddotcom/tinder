@@ -43,4 +43,4 @@ app.use('/profile', require('./controllers/profile'));
 app.use('/chatroom', require('./controllers/chatroom'));
 
 //listen
-app.listen(3000);
+app.listen(process.env.PORT || 3000)
