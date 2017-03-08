@@ -59,8 +59,14 @@
   <p> <%= user.interests.length %> interests </p>
 
   <% user.interests.forEach(function(interest){ %>
-    <p class="btn btn-secondary"><%= interest.name %></p>
+    <button id="<%=interest.id%>" class="btn btn-secondary delete-interest"><i class="fa fa-close" aria-hidden="true"></i>  <%= interest.name %></button>
   <% }); %>
+  <br>
+  <form method="POST" action="/profile/addInterest" class="form-group">
+    <label for="interests">Add Interests: </label>
+    <input type="text" name="interests" class="form-control" placeholder="comma-separated interests">
+    <input type="submit" class="btn btn-danger" value="add">
+  </form>
 
   <hr>
   <a href="/profile/settings">Settings</a>
