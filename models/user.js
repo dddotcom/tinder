@@ -11,14 +11,16 @@ module.exports = function(sequelize, DataTypes) {
     work: DataTypes.STRING,
     about: DataTypes.TEXT,
     animalId: DataTypes.INTEGER,
-    interestedIn: DataTypes.INTEGER
+    interestedIn: DataTypes.INTEGER,
+    facebookId: DataTypes.STRING,
+    facebookToken: DataTypes.STRING
   }, {
     hooks: {
       beforeCreate: function(createdUser, options, callback){
-        // if(createdUser && createdUser.password){
+        if(createdUser && createdUser.password){
           var hash = bcrypt.hashSync(createdUser.password, 10);
           createdUser.password = hash;
-        // }
+        }
         callback(null, createdUser);
       }
     },

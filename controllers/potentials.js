@@ -118,7 +118,9 @@ router.post('/like/:potentialId', isLoggedIn, function(req, res){
       if(match){
         console.log("FOUND A MATCH! " + like.userId + " " + like.userIdLiked );
         //TODO: fix this
-        res.send({"redirect":"/potentials/match/" + like.userIdLiked});
+        res.send({
+          "redirect":"/potentials/match/" + like.userIdLiked
+        });
       } else {
         //do nothing
         res.send({"result":"success"});
@@ -146,11 +148,26 @@ router.post('/superlike/:potentialId', isLoggedIn, function(req, res){
     if(wasCreated){
       //good
       req.flash("success", "SuperLike added for " + like.userId + " : " + like.userIdLiked);
-      res.send({message: 'successful superlike'});
     } else {
       req.flash("error", "you've already superliked this guy");
-      res.send({message: 'unsuccessful superlike'});
     }
+    //search for matching like
+    db.like.findOne({
+      where: {userId: like.userIdLiked, userIdLiked: like.userId}
+    }).then(function(match){
+      if(match){
+        console.log("FOUND A MATCH! " + like.userId + " " + like.userIdLiked );
+        //TODO: fix this
+        res.send({
+          "redirect":"/potentials/match/" + like.userIdLiked
+        });
+      } else {
+        //do nothing
+        res.send({"result":"success"});
+      }
+    }).catch(function(err){
+      res.status(400).send("error");
+    });
   }).catch(function(err){
     req.flash("error", err.message);
     res.redirect("/potentials");

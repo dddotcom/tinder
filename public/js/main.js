@@ -76,7 +76,10 @@ $(document).ready(function(){
         data: $(this).serialize(),
       }).done(function(data){
         console.log("done adding to likes as a superlike!");
-        if (!document.URL.endsWith('/potentials')){
+        if(data.redirect){
+            window.location = data.redirect
+        }
+         else if (!document.URL.endsWith('/potentials')){
             window.location = "/potentials";
         }
       });
