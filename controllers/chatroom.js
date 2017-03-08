@@ -22,7 +22,7 @@ router.get('/', isLoggedIn, function(req, res){
           if(match){
             db.user.find({
               where: {id: match.userId},
-              include: [db.profile_pic, db.chat]
+              include: [{model: db.profile_pic, required: false}, {model: db.chat, where: {userIdTo: req.user.id}, required: false}]
             })
             .then(function(user){
               if(user){
@@ -59,11 +59,11 @@ router.get('/:potentialId', isLoggedIn, function(req, res){
 
   db.user.findOne({
     where: {id: req.params.potentialId},
-    include: [db.profile_pic, db.chat]
+    include: [{model: db.profile_pic, required: false}, {model: db.chat, where: {userIdTo: req.user.id}, required: false}]
   }).then(function(user){
       db.user.findOne({
         where: {id: req.user.id},
-        include: [db.chat]
+        include: [{model: db.chat, where: {userIdTo: req.params.potentialId}, required: false}]
       }).then(function(currentUser){
           res.render('chatroom/show', {match: user, currentUser: currentUser});
       }).catch(function(error){
