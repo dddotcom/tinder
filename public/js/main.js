@@ -53,7 +53,11 @@ $(document).ready(function(){
         data: $(this).serialize(),
       }).done(function(data){
         console.log("done adding to likes!");
-        if (!document.URL.endsWith('/potentials')){
+        console.log(data);
+        if(data.redirect){
+            window.location = data.redirect
+        }
+         else if (!document.URL.endsWith('/potentials')){
             window.location = "/potentials";
         }
       });
@@ -86,7 +90,7 @@ $(document).ready(function(){
       $(this).remove();
     });
   });
-  
+
 })
 
 function findGreatestZindex(){

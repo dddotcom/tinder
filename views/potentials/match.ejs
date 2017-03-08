@@ -1,11 +1,15 @@
+<% var potentialUserIndex = 0; var currentUserIndex = 1; if(users[1].id !== currentUser.id){ %>
+    <% potentialUserIndex = 1; currentUserIndex = 0; %>
+<% }; %>
+
 <h1>It's a Match!</h1>
-<h3>You and Doge have liked each other.</h3>
+<h3>You and <%= users[potentialUserIndex].name %> have liked each other.</h3>
 
 <div class="match d-inline-block">
-  <img src="/images/doge.jpg" class="text-left">
-  <img src="/images/magic_casper.png" class="text-left">
+  <img src="<%= users[currentUserIndex].profile_pics[0].url %>" class="text-left">
+  <img src="<%= users[potentialUserIndex].profile_pics[0].url %>" class="text-left">
 </div>
 
-<a href="/chatroom/1/2" class="btn btn-danger">SEND A MESSAGE</a>
+<a href="/chatroom/<%= currentUser.id %>" class="btn btn-danger">SEND A MESSAGE</a>
 <br>
 <a href="/potentials" class="btn btn-secondary">KEEP SWIPING</a>
