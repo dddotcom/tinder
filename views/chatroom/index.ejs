@@ -1,6 +1,6 @@
 <div class="container">
   <header>
-    <a href="/profile/1" class="btn btn-secondary"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
+    <a href="/profile" class="btn btn-secondary"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
     <a href="/potentials" class="btn btn-secondary"><i class="fa fa-tint fa-2x" aria-hidden="true"></i></a>
     <a href="#" class="btn btn-danger"><i class="fa fa-weixin fa-2x" aria-hidden="true"></i></a>
   </header>
@@ -8,17 +8,27 @@
 <br>
 <div class="container">
   <h1>Messages</h1>
-  <% matches.forEach(function(match){ %>
-    <a href="/chatroom/1/<%=match.id%>"><img src=<%=match.profile_pics[0].url%>></a>
-    <p>
-      <strong><%=match.name%></strong>
-    </p>
-    <% if(match.chats.length){ %>
-      <p><%=match.chats[match.chats.length-1].content %></p>
-    <% } %>
-    <%//else show the current user's latest chat %>
-    <!-- <p>
-      <i class="fa fa-mail-reply" aria-hidden="true"></i> <%=match.chats[0].content %>
-    </p> -->
+
+<% matches.forEach(function(match){ %>
+    <div class="row">
+      <div class="col-xs-3">
+        <a href="/chatroom/<%=match.id%>"><img class="chatroom-pic" src=<%=match.profile_pics[0].url%>></a>
+      </div>
+      <div class="col-xs-9">
+        <h3>
+          <strong><%=match.name%></strong>
+        </h3>
+        <% if(match.chats.length && currentUser.chats.length){ %>
+          <% if(new Date(match.chats[match.chats.length-1].createdAt) >= new Date(currentUser.chats[currentUser.chats.length-1].createdAt)){ %>
+            <p><%=match.chats[match.chats.length-1].content %></p>
+          <% } else { %>
+            <p><i class="fa fa-reply" aria-hidden="true"></i>
+            <%=currentUser.chats[currentUser.chats.length-1].content %></p>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+    <hr>
   <% }) %>
+
 </div>

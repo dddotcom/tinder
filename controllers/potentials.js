@@ -6,11 +6,6 @@ var async = require('async');
 var router = express.Router();
 
 router.get('/', isLoggedIn, function(req, res){
-  //TODO: and not in like or dislike table
-  //find all cats that don't have dislikes
-  //find all cats that don't have likes
-  //otherwise raw sql query w/ seqeulize
-
   var interestedIn = req.user.interestedIn;
   var seenIds = [req.user.id];
 
@@ -51,8 +46,18 @@ router.get('/', isLoggedIn, function(req, res){
   });
 });
 
-router.get('/match/:id/:potentialId', isLoggedIn, function(req, res){
-  res.render('potentials/match');
+router.get('/match/:potentialId', isLoggedIn, function(req, res){
+  var users = [parseInt(req.user.id, 10), parseInt(req.params.potentialId, 10)];
+  console.log(users);
+  db.user.findAll({
+    where: { id: {$in: users}},
+    include: [db.profile_pic]
+  }).then(function(users){
+      console.log("find all");
+      res.render('potentials/match', {users: users});
+  }).catch(function(error){
+    res.status(400).send("error");
+  });
 });
 
 router.get('/:id', isLoggedIn, function(req, res){
@@ -102,11 +107,26 @@ router.post('/like/:potentialId', isLoggedIn, function(req, res){
     if(wasCreated){
       //good
       req.flash("success", "Like added for " + like.userId + " : " + like.userIdLiked);
-      res.send({message: 'successful like'});
     } else {
       req.flash("error", "you've already liked this guy");
-      res.send({message: 'unsuccessful like'});
     }
+
+    //search for matching like
+    db.like.findOne({
+      where: {userId: like.userIdLiked, userIdLiked: like.userId}
+    }).then(function(match){
+      if(match){
+        console.log("FOUND A MATCH! " + like.userId + " " + like.userIdLiked );
+        //TODO: fix this
+        res.send({"redirect":"/potentials/match/" + like.userIdLiked});
+      } else {
+        //do nothing
+        res.send({"result":"success"});
+      }
+    }).catch(function(err){
+      res.status(400).send("error");
+    });
+
   }).catch(function(err){
     req.flash("error", err.message);
     res.redirect("/potentials");

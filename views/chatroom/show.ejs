@@ -1,29 +1,41 @@
 <div class="container">
-  <a href="/chatroom/1"><h1><i class="fa fa-angle-left" aria-hidden="true"></i> Doge</h1></a>
+    <h1>
+      <a href="/chatroom">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+      </a>
+      <img class="chatroom-pic-small" src=<%= match.profile_pics[0].url %> >
+      <%= match.name %>
+    </h1>
   <hr>
 
   <div class="container chatlog">
-    <div class="message-me text-right">
-      <p>
-        Hey what's up
-      </p>
-      <p>
-        <small>8 hr. ago</small>
-      </p>
-    </div>
-    <div class="message-potential text-left">
-      <p>
-        Nothing much
-      </p>
-      <p>
-        <small>Doge 6 hr. ago</small>
-      </p>
-    </div>
+
+    <% var allChats = currentUser.chats.concat(match.chats);
+    allChats.sort(function(a,b){
+      return b.createdAt - a.createdAt;
+    }); %>
+    <% allChats.forEach(function(message){ %>
+      <% if(message.userId == currentUser.id){ %>
+        <div class="message-me text-right">
+          <p><%=message.content%></p>
+          <p><small><%= moment(message.createdAt).fromNow() %></small></p>
+        </div>
+      <% } else { %>
+        <div class="message-potential text-left">
+          <p>
+            <img class="chatroom-pic-xsmall" src=<%= match.profile_pics[0].url %> >
+            <%=message.content%>
+          </p>
+          <p><small><%= match.name %> <%= moment(message.createdAt).fromNow() %></small></p>
+        </div>
+      <% } %>
+    <% }); %>
   </div>
 
 
   <hr>
-  <form method="POST" action="/chatroom/1/2">
+
+  <form method="POST" action="/chatroom/<%=match.id%>">
     <div class="form-group">
       <input type="text" name="content" class="form-control" placeholder="Send a message...">
     </div>
