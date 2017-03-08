@@ -18,14 +18,24 @@
         <h3>
           <strong><%=match.name%></strong>
         </h3>
-        <% if(match.chats.length && currentUser.chats.length){ %>
-          <% if(new Date(match.chats[match.chats.length-1].createdAt) >= new Date(currentUser.chats[currentUser.chats.length-1].createdAt)){ %>
+
+        <% function isValidChat(chat){ return chat.userIdTo === match.id; } %>
+        <% var currentUserValidChats = currentUser.chats.filter(isValidChat); %>
+
+        <% if(match.chats.length && currentUserValidChats.length){ %>
+          <% if(new Date(match.chats[match.chats.length-1].createdAt) >= new Date(currentUserValidChats[currentUserValidChats.length-1].createdAt)){ %>
             <p><%=match.chats[match.chats.length-1].content %></p>
           <% } else { %>
             <p><i class="fa fa-reply" aria-hidden="true"></i>
-            <%=currentUser.chats[currentUser.chats.length-1].content %></p>
+            <%=currentUserValidChats[currentUserValidChats.length-1].content %></p>
           <% } %>
+        <% } else if(match.chats.length){ %>
+          <p><%=match.chats[match.chats.length-1].content %></p>
+        <% } else { %>
+          <p><i class="fa fa-reply" aria-hidden="true"></i>
+          <%=currentUserValidChats[currentUserValidChats.length-1].content %></p>
         <% } %>
+
       </div>
     </div>
     <hr>
