@@ -2,6 +2,7 @@ var express = require('express');
 var db = require('../models');
 var isLoggedIn = require("../middleware/isLoggedIn");
 var passport = require('../config/passportConfig');
+var giphy = require('giphy-api')();
 var async = require('async');
 var router = express.Router();
 
@@ -17,6 +18,27 @@ router.get('/', isLoggedIn, function(req, res){
   .catch(function(error){
     res.status(400).send("error");
   });
+});
+
+router.get('/getNewPic/:picId', isLoggedIn, function(req, res){
+  if(req.user.animalId === 1){
+    q = 'cat';
+  } else {
+    q = 'dog';
+  }
+
+  giphy.random({
+      tag: q,
+      rating: 'g',
+      fmt: 'json'
+  }, function (err, response) {
+    var url = response.data.fixed_height_still;
+    res.send({
+      picId: req.params.picId,
+      picUrl: url
+    })
+  });
+
 });
 
 router.get('/edit', isLoggedIn, function(req, res){

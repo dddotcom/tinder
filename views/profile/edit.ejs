@@ -5,8 +5,8 @@
   <br>
 
   <% user.profile_pics.forEach(function(pic){ %>
-    <img src="<%= pic.url %>">
-    <a href="#" class="btn btn-danger"><i class="fa fa-random" aria-hidden="true"></i></a>
+    <img class="profile-pic-<%= pic.id %>" src="<%= pic.url %>">
+    <a href="/profile/getNewPic/<%=pic.id%>" class="btn btn-danger getNewPic"><i class="fa fa-random" aria-hidden="true"></i></a>
   <% }) %>
 
   <form action="/profile" class="put-form">

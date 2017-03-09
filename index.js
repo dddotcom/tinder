@@ -8,6 +8,8 @@ var flash = require('connect-flash');
 var passport = require('./config/passportConfig');
 var isLoggedIn = require("./middleware/isLoggedIn");
 var session = require('express-session');
+var giphy = require('giphy-api')();
+var async = require('async');
 require('dotenv').config();
 var app = express();
 
@@ -34,6 +36,35 @@ app.use(function(req, res, next) {
 //routes
 app.get('/', function(req, res){
   res.render('index');
+});
+
+app.get('/giphy', function(req, res){
+  // Random gif with options
+  function catPic(callback){
+    giphy.random({
+        tag: 'cat',
+        rating: 'g',
+        fmt: 'json'
+    }, function (err, response) {
+      var url = response.data.fixed_width_downsampled_url;
+      callback(null, url);
+    });
+  }
+
+  function dogPic(callback){
+    giphy.random({
+        tag: 'dog',
+        rating: 'g',
+        fmt: 'json'
+    }, function (err, response) {
+      var url = response.data.fixed_width_downsampled_url;
+      callback(null, url);
+    });
+  }
+
+  async.series([catPic, dogPic], function(error, results){
+    res.render('giphy', {results, results});
+  })
 });
 
 //controllers
