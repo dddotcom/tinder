@@ -32,11 +32,22 @@ router.get('/getNewPic/:picId', isLoggedIn, function(req, res){
       rating: 'g',
       fmt: 'json'
   }, function (err, response) {
-    var url = response.data.fixed_height_still;
-    res.send({
-      picId: req.params.picId,
-      picUrl: url
-    })
+    var url = response.data.fixed_width_downsampled_url;
+    db.profile_pic.findOne(
+      {where: {id: req.params.picId}
+    }).then(function(pic){
+      pic.url = url;
+      pic.save().then(function(){
+        res.send({
+          picId: req.params.picId,
+          picUrl: url
+        })
+      }).catch(function(error){
+        res.status(400).send("error");
+      });
+    }).catch(function(error){
+      res.status(400).send("error");
+    });
   });
 
 });

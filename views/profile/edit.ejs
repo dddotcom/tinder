@@ -3,9 +3,8 @@
   <h1>Edit Profile</h1>
 
   <br>
-
   <% user.profile_pics.forEach(function(pic){ %>
-    <img class="profile-pic-<%= pic.id %>" src="<%= pic.url %>">
+    <img class="profile-pic profile-pic-<%= pic.id %>" src="<%= pic.url %>">
     <a href="/profile/getNewPic/<%=pic.id%>" class="btn btn-danger getNewPic"><i class="fa fa-random" aria-hidden="true"></i></a>
   <% }) %>
 

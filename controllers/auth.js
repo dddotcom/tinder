@@ -5,7 +5,7 @@ var passport = require('../config/passportConfig');
 var router = express.Router();
 
 var catUrl = 'https://pbs.twimg.com/profile_images/815726509763620864/3ZrsVyWa.jpg';
-var dogUrl = 'https://www.what-dog.net/Images/faces2/scroll0015.jpg';
+var dogUrl = 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg';
 
 router.get('/login', function(req, res){
   res.render('auth/login');

@@ -89,7 +89,7 @@ passport.use(new facebookStrategy({
         if(wasCreated){
           //they were new, we created a user
           var catUrl = 'https://pbs.twimg.com/profile_images/815726509763620864/3ZrsVyWa.jpg';
-          var dogUrl = 'https://www.what-dog.net/Images/faces2/scroll0015.jpg';
+          var dogUrl = 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg';
           var url = dogUrl;
           if(user.animalId == 1){
             url = catUrl;
