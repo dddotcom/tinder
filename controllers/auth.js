@@ -77,7 +77,7 @@ router.post('/signup', function(req, res){
               successFlash: "Account created and logged in"
             })(req, res);
           });
-        })//end of forEachSeries
+        });//end of forEachSeries
       }
     } else {
       //bad
