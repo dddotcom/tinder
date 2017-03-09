@@ -2,10 +2,8 @@ var express = require('express');
 var async = require('async');
 var db = require('../models');
 var passport = require('../config/passportConfig');
+var giphy = require('giphy-api')();
 var router = express.Router();
-
-var catUrl = 'https://pbs.twimg.com/profile_images/815726509763620864/3ZrsVyWa.jpg';
-var dogUrl = 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg';
 
 router.get('/login', function(req, res){
   res.render('auth/login');
@@ -62,21 +60,29 @@ router.post('/signup', function(req, res){
           });
         }, function(){
           //TODO: add profile picture
-          var url = dogUrl;
+          var q = 'dog';
           if(req.body.animalId == 1){
-            url = catUrl;
+            q = 'cat';
           }
 
-          db.profile_pic.create({
-            url: url,
-            userId: user.id
-          }).then(function(newPic){
-            user.addProfile_pic(newPic);
-            passport.authenticate("local", {
-              successRedirect: "/potentials",
-              successFlash: "Account created and logged in"
-            })(req, res);
-          });
+          giphy.random({
+              tag: q,
+              rating: 'g',
+              fmt: 'json'
+          }, function (err, response) {
+            var url = response.data.fixed_width_downsampled_url;
+            db.profile_pic.create({
+              url: url,
+              userId: user.id
+            }).then(function(newPic){
+              user.addProfile_pic(newPic);
+              passport.authenticate("local", {
+                successRedirect: "/potentials",
+                successFlash: "Account created and logged in"
+              })(req,res);
+            });
+          }); //end of giphy
+
         });//end of forEachSeries
       }
     } else {
