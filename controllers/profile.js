@@ -90,6 +90,24 @@ router.post('/addInterest', isLoggedIn, function(req, res){
   } else {
     res.redirect('/profile');
   }//end of if
-})
+});
+
+router.delete('/addInterest/:interestId', function(req, res){
+  db.user.findOne({
+    where: {id: req.user.id},
+    include: [db.interest]
+  }).then(function(user){
+    db.interest.findOne({
+      where: {id: req.params.interestId}
+    }).then(function(interest){
+      user.removeInterest(interest);
+      res.send({message: 'successful update of user profile'});
+    }).catch(function(err){
+      res.status(400).send("error");
+    })
+  }).catch(function(err){
+    res.status(400).send("error");
+  })
+});
 
 module.exports = router;
