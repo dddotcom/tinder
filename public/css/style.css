@@ -1,25 +1,22 @@
 body {
-  /*text-align: center;*/
+  background-color: LightGray;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#carousel-text {
+  margin: 30px auto;
 }
 
 .carousel {
-  width: 50em;
   margin: 3em auto;
 }
 
-.carousel-item img {
-  width: 50em;
-  height: 35em;
+.carousel-inner > .item > img {
+    margin: 0 auto;
 }
 
-.carousel-item .potential {
-  height: 500px;
-  width: 500px;
-}
-
-.carousel-caption {
-  color: black;
-  top: 0;
+.carousel-inner img {
+  margin: auto;
 }
 
 .potential-img {
@@ -68,4 +65,12 @@ body {
 
 .profile-pic {
   width: 200px;
+}
+
+.login-btn {
+  padding: 20px 100px;
+  margin: 10px auto;
+  display: block;
+  width: 65%;
+  border-radius: 40px;
 }

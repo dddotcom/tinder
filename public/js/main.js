@@ -1,11 +1,17 @@
-console.log("hello!");
-$('.carousel').carousel({
-  interval: false
-})
-
+var homeText = ["Discover New and Interesting People", "Swipe Right to anonymously like someone or Swipe Left to pass",
+"If they also Swipe Right, It's a Match!", "Only people you've matched with can message you"];
 
 $(document).ready(function(){
   console.log("DOM ready");
+
+  $('.carousel').carousel({
+    interval: false
+  })
+
+  $(".carousel").on('slide.bs.carousel', function(evt) {
+  var textIndex = $(evt.relatedTarget).index();
+  $("#carousel-text").text(homeText[textIndex]);
+});
 
   $(".put-form").on("submit", function(e){
     e.preventDefault();
