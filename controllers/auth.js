@@ -102,7 +102,7 @@ router.post('/signup', function(req, res){
   }));
 
   router.get("/callback/facebook", passport.authenticate("facebook", {
-    successRedirect: "/profile",
+    successRedirect: "/potentials",
     successFlash: "You logged in with FBOOK",
     failureRedirect: "/auth/login",
     failureFlash: "fbook won't log you in"
