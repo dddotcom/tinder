@@ -94,6 +94,20 @@ $(document).ready(function(){
     });
   });
 
+  // delete-interest
+  $(".delete-interest").click(function(e){
+    e.preventDefault();
+    var element = $(this);
+    var interestId = element.attr('id');
+    $.ajax({
+      method: 'DELETE',
+      url: '/profile/addInterest/' + interestId,
+    }).done(function(data){
+      element.remove();
+      window.location = '/profile';
+    });
+  });
+
 })
 
 function findGreatestZindex(){
