@@ -3,10 +3,10 @@
   <h1>Edit Profile</h1>
 
   <br>
-
   <% user.profile_pics.forEach(function(pic){ %>
-    <img src="<%= pic.url %>">
-    <a href="#" class="btn btn-danger"><i class="fa fa-random" aria-hidden="true"></i></a>
+    <img class="profile-pic profile-pic-<%= pic.id %>" src="<%= pic.url %>">
+    <a href="/profile/getNewPic/<%=pic.id%>" class="btn btn-danger getNewPic"><i class="fa fa-random" aria-hidden="true"></i></a>
+    <a href="/profile/revertPic/<%=pic.id%>" class="btn btn-danger revertPic">Revert</a>
   <% }) %>
 
   <form action="/profile" class="put-form">

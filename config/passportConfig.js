@@ -1,6 +1,8 @@
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var facebookStrategy = require('passport-facebook').Strategy;
+var async = require('async');
+var giphy = require('giphy-api')();
 var db = require("../models");
 require("dotenv").config();
 
@@ -88,19 +90,26 @@ passport.use(new facebookStrategy({
       }).spread(function(user, wasCreated){
         if(wasCreated){
           //they were new, we created a user
-          var catUrl = 'https://pbs.twimg.com/profile_images/815726509763620864/3ZrsVyWa.jpg';
-          var dogUrl = 'https://www.what-dog.net/Images/faces2/scroll0015.jpg';
-          var url = dogUrl;
+          var q = 'dog';
           if(user.animalId == 1){
-            url = catUrl;
+            q = 'cat';
           }
-          db.profile_pic.create({
-            url: url,
-            userId: user.id
-          }).then(function(newPic){
-            user.addProfile_pic(newPic);
-            cb(null, user);
+
+          giphy.random({
+              tag: q,
+              rating: 'g',
+              fmt: 'json'
+          }, function (err, response) {
+            var url = response.data.fixed_width_downsampled_url;
+            db.profile_pic.create({
+              url: url,
+              userId: user.id
+            }).then(function(newPic){
+              user.addProfile_pic(newPic);
+              cb(null, user);
+            });
           });
+
         } else {
           //they were not new after all, just update their token
           user.facebookToken = accessToken;

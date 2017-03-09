@@ -108,6 +108,23 @@ $(document).ready(function(){
     });
   });
 
+  $(".getNewPic").click(function(e){
+    e.preventDefault();
+    var element = $(this);
+    var url = element.attr('href');
+    console.log(url);
+    $.ajax({
+      method: 'GET',
+      url: url,
+    }).done(function(data){
+      //set url to new url
+      console.log(data);
+      var pic = $(".profile-pic-" + data.picId)[0];
+      $(pic).attr("src", data.picUrl);
+
+    });
+  });
+
 })
 
 function findGreatestZindex(){

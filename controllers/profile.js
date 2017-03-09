@@ -2,8 +2,12 @@ var express = require('express');
 var db = require('../models');
 var isLoggedIn = require("../middleware/isLoggedIn");
 var passport = require('../config/passportConfig');
+var giphy = require('giphy-api')();
 var async = require('async');
 var router = express.Router();
+
+var catUrl = 'https://pbs.twimg.com/profile_images/815726509763620864/3ZrsVyWa.jpg';
+var dogUrl = 'https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg';
 
 router.get('/', isLoggedIn, function(req, res){
   db.user.find({
@@ -15,6 +19,59 @@ router.get('/', isLoggedIn, function(req, res){
     res.render('profile/index', {user: user});
   })
   .catch(function(error){
+    res.status(400).send("error");
+  });
+});
+
+router.get('/getNewPic/:picId', isLoggedIn, function(req, res){
+  if(req.user.animalId === 1){
+    q = 'cat';
+  } else {
+    q = 'dog';
+  }
+
+  giphy.random({
+      tag: q,
+      rating: 'g',
+      fmt: 'json'
+  }, function (err, response) {
+    var url = response.data.fixed_width_downsampled_url;
+    db.profile_pic.findOne(
+      {where: {id: req.params.picId}
+    }).then(function(pic){
+      pic.url = url;
+      pic.save().then(function(){
+        res.send({
+          picId: req.params.picId,
+          picUrl: url
+        })
+      }).catch(function(error){
+        res.status(400).send("error");
+      });
+    }).catch(function(error){
+      res.status(400).send("error");
+    });
+  });
+
+});
+
+router.get('/revertPic/:picId', isLoggedIn, function(req, res){
+  var url = catUrl;
+  if (req.user.animalId === 2){
+    url = dogUrl;
+  }
+
+  db.profile_pic.findOne(
+    {where: {id: req.params.picId}
+  }).then(function(pic){
+    pic.url = url;
+    pic.save().then(function(){
+      //do nothing
+      res.redirect("/profile/edit");
+    }).catch(function(error){
+      res.status(400).send("error");
+    });
+  }).catch(function(error){
     res.status(400).send("error");
   });
 });
