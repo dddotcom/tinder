@@ -88,16 +88,4 @@ router.post('/:potentialId', isLoggedIn, function(req, res){
   });
 });
 
-function saveChatToDb(userId, userIdTo, content){
-    db.chat.create({
-      userId: userId,
-      userIdTo: userIdTo,
-      content: content
-    }).then(function(newChat){
-      user.addChat(newChat);
-    }).catch(function(error){
-      res.status(400).send("error");
-    });
-}
-
 module.exports = router;

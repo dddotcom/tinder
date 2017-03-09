@@ -24,9 +24,8 @@ router.get('/', isLoggedIn, function(req, res){
 });
 
 router.get('/getNewPic/:picId', isLoggedIn, function(req, res){
-  if(req.user.animalId === 1){
-    q = 'cat';
-  } else {
+  var q = 'cat';
+  if(req.user.animalId === 2){
     q = 'dog';
   }
 
@@ -44,7 +43,7 @@ router.get('/getNewPic/:picId', isLoggedIn, function(req, res){
         res.send({
           picId: req.params.picId,
           picUrl: url
-        })
+        });
       }).catch(function(error){
         res.status(400).send("error");
       });
@@ -143,7 +142,7 @@ router.post('/addInterest', isLoggedIn, function(req, res){
     })
     .catch(function(err){
       res.status(400).send("error");
-    })
+    });
   } else {
     res.redirect('/profile');
   }//end of if
@@ -161,10 +160,10 @@ router.delete('/addInterest/:interestId', function(req, res){
       res.send({message: 'successful update of user profile'});
     }).catch(function(err){
       res.status(400).send("error");
-    })
+    });
   }).catch(function(err){
     res.status(400).send("error");
-  })
+  });
 });
 
 module.exports = router;

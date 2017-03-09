@@ -3,19 +3,19 @@
 <form method="POST" action="/auth/signup">
   <div class="form-group">
     <label for="email">Email*: </label>
-    <input type="text" name="email" class="form-control" placeholder="Type your email">
+    <input type="text" name="email" class="form-control" placeholder="Type your email" required>
   </div>
   <div class="form-group">
     <label for="password">Password*: </label>
-    <input type="password" name="password" class="form-control" placeholder="Type your password">
+    <input type="password" name="password" class="form-control" placeholder="Type your password" required>
   </div>
   <div class="form-group">
     <label for="name">Name*: </label>
-    <input type="text" name="name" class="form-control" placeholder="Type your name">
+    <input type="text" name="name" class="form-control" placeholder="Type your name" required>
   </div>
   <div class="form-group">
     <label for="age">Age*: </label>
-    <input type="text" name="age" class="form-control" placeholder="Type your age">
+    <input type="text" name="age" class="form-control" placeholder="Type your age" required>
   </div>
   <div class="form-group">
     <label for="school">School: </label>
@@ -26,12 +26,12 @@
     <input type="text" name="work" class="form-control" placeholder="Type your work">
   </div>
   <div class="form-group">
-    <label for="interests">Interests: </label>
-    <input type="text" name="interests" class="form-control" placeholder="Comma-separated interests">
+    <label for="interests">Interests*: </label>
+    <input type="text" name="interests" class="form-control" placeholder="Comma-separated interests" required>
   </div>
   <div class="form-group">
     <label for="animalId">I am a*: </label>
-    <select name="animalId">
+    <select name="animalId" required>
       <option value="1" selected="selected">Cat</option>
       <option value="2">Dog</option>
     </select>

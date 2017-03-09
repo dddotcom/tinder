@@ -14,13 +14,13 @@ router.get('/', isLoggedIn, function(req, res){
   }).then(function(likes){
     likes.forEach(function(like){
       seenIds.push(like.userIdLiked);
-    })
+    });
     db.dislike.findAll({
       where: {userId: req.user.id}
     }).then(function(dislikes){
       dislikes.forEach(function(dislike){
         seenIds.push(dislike.userIdDisliked);
-      }) //end of forEach
+      }); //end of forEach
       console.log("seen ids", seenIds);
       db.user.findAll({
         where: {

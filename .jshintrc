@@ -1,0 +1,3 @@
+{"strict": "implied",
+"predef": ["require", "module", "console"],
+"unused": true}
