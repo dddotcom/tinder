@@ -148,6 +148,76 @@ router.post('/addInterest', isLoggedIn, function(req, res){
   }//end of if
 });
 
+router.delete('/', function(req, res){
+  var userId = req.user.id;
+
+  //destroy likes
+
+  db.user.findOne({
+    where: {id: req.user.id},
+    include: [db.interest]
+  }).then(function(user){
+    async.forEachSeries(user.interests, function(interest, callback){
+      user.removeInterest(interest);
+      callback(null);
+    }, function(){
+      //logout user
+      req.logout();
+
+      //destroy chatroom-pic-small
+      function deleteChats(callback){
+        db.chat.destroy({
+          where: {userId: userId}
+        }).then(function(del){
+          db.chat.destroy({
+            where: {userIdTo: userId}
+          }).then(function(del2){
+            callback(null, del2);
+          });
+        });
+      }
+
+      //destroy likes
+      function deleteLikes(callback){
+        db.like.destroy({
+          where: {userId: userId}
+        }).then(function(del){
+            callback(null, del);
+        });
+      }
+
+      function deleteDislikes(callback){
+        db.dislike.destroy({
+          where: {userId: userId}
+        }).then(function(del){
+          callback(null, del);
+        });
+      }
+
+      function deletePics(callback){
+        db.profile_pic.destroy({
+          where: {userId: userId}
+        }).then(function(del){
+          callback(null, del);
+        });
+      }
+
+      function deleteUser(callback){
+        db.user.destroy({
+          where: {id: userId}
+        }).then(function(del){
+          callback(null, del);
+        });
+      }
+
+      async.series([deleteChats, deleteLikes, deleteDislikes, deletePics, deleteUser], function(error, results){
+        req.flash("success", "Your account was deleted!");
+        res.send("deleted user");
+      });
+    });
+  });
+});
+
 router.delete('/addInterest/:interestId', function(req, res){
   db.user.findOne({
     where: {id: req.user.id},
