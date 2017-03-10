@@ -114,6 +114,56 @@ $(document).ready(function(){
     });
   });
 
+  $(".btn-dislike-zoom").click(function(e){
+    var potentialId = $(".potential-user").attr('id');
+    $.ajax({
+      method: "POST",
+      url: "/potentials/dislike/" + potentialId,
+      data: $(this).serialize(),
+    }).done(function(data){
+      if(data.redirect){
+          window.location = data.redirect;
+      }
+       else if (!document.URL.endsWith('/potentials')){
+          window.location = "/potentials";
+      }
+    });
+    console.log("dislike from potentials/show" + potentialId);
+  });
+
+  $(".btn-like-zoom").click(function(e){
+    console.log("like from potentials/show");
+    var potentialId = $(".potential-user").attr('id');
+    $.ajax({
+      method: "POST",
+      url: "/potentials/like/" + potentialId,
+      data: $(this).serialize(),
+    }).done(function(data){
+      if(data.redirect){
+          window.location = data.redirect;
+      }
+       else if (!document.URL.endsWith('/potentials')){
+          window.location = "/potentials";
+      }
+    });
+  });
+  $(".btn-superlike-zoom").click(function(e){
+    console.log("superlike from potentials/show");
+    var potentialId = $(".potential-user").attr('id');
+    $.ajax({
+      method: "POST",
+      url: "/potentials/superlike/" + potentialId,
+      data: $(this).serialize(),
+    }).done(function(data){
+      if(data.redirect){
+          window.location = data.redirect;
+      }
+       else if (!document.URL.endsWith('/potentials')){
+          window.location = "/potentials";
+      }
+    });
+  });
+
   // delete-interest
   $(".delete-interest").click(function(e){
     e.preventDefault();

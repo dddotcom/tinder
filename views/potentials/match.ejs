@@ -1,15 +1,39 @@
 <% var potentialUserIndex = 0; var currentUserIndex = 1; if(users[1].id !== currentUser.id){ %>
     <% potentialUserIndex = 1; currentUserIndex = 0; %>
 <% }; %>
-
-<h1 class="match-text">It's a Match!</h1>
-<h3>You and <%= users[potentialUserIndex].name %> have liked each other.</h3>
-
-<div class="match d-inline-block">
-  <img class="match-pic" src="<%= users[currentUserIndex].profile_pics[0].url %>" class="text-left">
-  <img class="match-pic" src="<%= users[potentialUserIndex].profile_pics[0].url %>" class="text-left">
+<div class="row text-center">
+  <div class="col-12">
+    <h1 class="match-text">It's a Match!</h1>
+  </div>
 </div>
-
-<a href="/chatroom/<%= users[potentialUserIndex].id %>" class="btn btn-danger">SEND A MESSAGE</a>
+<div class="row text-center">
+  <div class="col-12">
+    <h3>You and <%= users[potentialUserIndex].name %> have liked each other.</h3>
+  </div>
+</div>
 <br>
-<a href="/potentials" class="btn btn-secondary">KEEP SWIPING</a>
+<div class="row text-center">
+  <div class="offset-3 col-3">
+    <img class="match-pic" src="<%= users[currentUserIndex].profile_pics[0].url %>" class="text-left">
+  </div>
+  <div class="col-3">
+    <img class="match-pic" src="<%= users[potentialUserIndex].profile_pics[0].url %>" class="text-left">
+  </div>
+  </div>
+</div>
+<br>
+<div class="row match">
+  <div class="offset-4 col-4">
+    <h2 class="text-center">
+      <a href="/chatroom/<%= users[potentialUserIndex].id %>" class="btn btn-danger">SEND A MESSAGE</a>
+    </h2>
+  </div>
+</div>
+<br>
+<div class="row match">
+  <div class="offset-4 col-4">
+    <h2 class="text-center">
+      <a href="/potentials" class="btn btn-secondary red">KEEP SWIPING</a>
+    </h2>
+  </div>
+</div>

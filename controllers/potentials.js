@@ -48,12 +48,12 @@ router.get('/', isLoggedIn, function(req, res){
 
 router.get('/match/:potentialId', isLoggedIn, function(req, res){
   var users = [parseInt(req.user.id, 10), parseInt(req.params.potentialId, 10)];
-  console.log(users);
+  // console.log(users);
   db.user.findAll({
     where: { id: {$in: users}},
     include: [db.profile_pic]
   }).then(function(users){
-      console.log("find all");
+      // console.log("find all");
       res.render('potentials/match', {users: users});
   }).catch(function(error){
     res.status(400).send("error");
