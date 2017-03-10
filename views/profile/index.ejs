@@ -1,9 +1,17 @@
 <div class="container">
-  <header>
-    <a href="#" class="btn btn-danger"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
-    <a href="/potentials" class="btn btn-secondary"><i class="fa fa-tint fa-2x" aria-hidden="true"></i></a>
-    <a href="/chatroom" class="btn btn-secondary"><i class="fa fa-weixin fa-2x" aria-hidden="true"></i></a>
-  </header>
+  <div class="row nav-bar">
+    <div class="col-12 col-sm-4 text-center">
+        <a href="/profile" class="nav-btn btn btn-danger red-background"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i></a>
+    </div>
+    <div class="col-12 col-sm-4 text-center">
+      <a href="/potentials" class="nav-tinder btn btn-secondary">
+        <img src="/images/logo-white.png">
+      </a>
+    </div>
+    <div class="col-12 col-sm-4 text-center">
+      <a href="/chatroom" class="nav-btn btn btn-secondary"><p>...</p></a>
+    </div>
+  </div>
 </div>
 <div class="container">
 
@@ -40,34 +48,59 @@
   </div>
 
   <a href="/profile/edit" class="btn btn-danger"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
-  <p>
-    <strong><%= user.name %></strong>, <%= user.age %>
-  </p>
+  <br><br>
 
-  <% if(user.school){ %>
-    <p>Studies at <%= user.school %> </p>
-  <% } %>
+  <div class="profile-content">
+    <h4>
+      <strong><%= user.name %></strong>, <%= user.age %>
+    </h4>
 
-  <% if(user.work){ %>
-    <p>Works at <%= user.work %> </p>
-  <% } %>
-  <hr>
+    <% if(user.school){ %>
+      <p>Studies at <%= user.school %> </p>
+    <% } %>
 
-  <p><%= user.about %></p>
+    <% if(user.work){ %>
+      <p>Works at <%= user.work %> </p>
+    <% } %>
 
-  <hr>
-  <p> <%= user.interests.length %> interests </p>
+    <% if(!user.work && !user.school){ %>
+      <p class="gray"><i>There's nothing to show here</i></p>
+    <% } %>
 
-  <% user.interests.forEach(function(interest){ %>
-    <button id="<%=interest.id%>" class="btn btn-secondary delete-interest"><i class="fa fa-close" aria-hidden="true"></i>  <%= interest.name %></button>
-  <% }); %>
+    <hr>
+
+    <% if(user.about){ %>
+        <p><%= user.about %></p>
+    <% } else { %>
+        <p class="gray"><i>There's nothing to show here</i></p>
+    <% } %>
+
+
+    <hr>
+    <p> <%= user.interests.length %> interests </p>
+
+    <% user.interests.forEach(function(interest){ %>
+      <button id="<%=interest.id%>" class="btn btn-secondary delete-interest"><i class="fa fa-close" aria-hidden="true"></i>  <%= interest.name %></button>
+    <% }); %>
+
+  </div>
+  
   <br>
+
   <form method="POST" action="/profile/addInterest" class="form-group">
-    <label for="interests">Add Interests: </label>
-    <input type="text" name="interests" class="form-control" placeholder="comma-separated interests">
-    <input type="submit" class="btn btn-danger" value="add">
+    <div class="form-group row">
+      <div class="col-11">
+        <input type="text" name="interests" class="form-control form-control-lg" placeholder="Add more comma-separated interests">
+      </div>
+      <div class="col-1">
+        <button type="submit" class="btn btn-danger">
+          <i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
   </form>
 
   <hr>
-  <a href="/profile/settings">Settings</a>
+  <p><a href="/profile/settings">Settings</a></p>
 </div>

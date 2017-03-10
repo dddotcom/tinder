@@ -2,12 +2,12 @@
     <% potentialUserIndex = 1; currentUserIndex = 0; %>
 <% }; %>
 
-<h1>It's a Match!</h1>
+<h1 class="match-text">It's a Match!</h1>
 <h3>You and <%= users[potentialUserIndex].name %> have liked each other.</h3>
 
 <div class="match d-inline-block">
-  <img src="<%= users[currentUserIndex].profile_pics[0].url %>" class="text-left">
-  <img src="<%= users[potentialUserIndex].profile_pics[0].url %>" class="text-left">
+  <img class="match-pic" src="<%= users[currentUserIndex].profile_pics[0].url %>" class="text-left">
+  <img class="match-pic" src="<%= users[potentialUserIndex].profile_pics[0].url %>" class="text-left">
 </div>
 
 <a href="/chatroom/<%= users[potentialUserIndex].id %>" class="btn btn-danger">SEND A MESSAGE</a>

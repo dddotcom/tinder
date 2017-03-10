@@ -1,21 +1,54 @@
+<h2>
+  <a href="/profile"><i class="fa fa-angle-left black" aria-hidden="true"></i></a>
+  Settings
+</h2>
+
+<hr>
 <div class="container">
-  <a href="/profile"><i class="fa fa-angle-left" aria-hidden="true"></i> Back</a>
-  <h1>Settings</h1>
-  <br>
-  <form action="/profile/settings" class="put-form">
-    <div class="form-group">
-      <label for="interestedIn">Show Me </label>
-      <select name="interestedIn">
-        <option class="1" value="1">Cats</option>
-        <option class="2" value="2">Dogs</option>
-      </select>
+
+
+  <div class="row settings">
+    <div class="col-8 offset-2">
+      <h2 class="text-center"><a href="#" class="red black btn btn-secondary">Get Tinder Plus</a></h2>
+      <br>
+      <p><strong>Discovery Settings</strong></p>
+      <p class="red"><strong>Show Me</strong></p>
+      <form action="/profile/settings" class="put-form">
+        <div class="row">
+          <div class="col-10">
+            <div class="form-group">
+              <select name="interestedIn" class="form-control form-control-lg">
+                <option class="1" value="1">Cats</option>
+                <option class="2" value="2">Dogs</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-2">
+            <button type="submit" class="btn btn-secondary">
+              <i class="fa fa-angle-right fa-lg" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      <p class="gray">Tinder uses these preferences to suggest matches. Some match suggestions may not fall within your desired parameters.</p>
+      <br>
+      <div class="row">
+        <div class="col-12">
+          <h2 class="text-center"><a href="/auth/logout" class="black btn btn-secondary">Logout</a></h2>
+          <br>
+          <div class="text-center">
+            <img class="logo" src="/images/logo.png">
+            <p class="gray">Version 0.0.1 (desktop) [catz]</p>
+          </div>
+          <br>
+          <h2 class="text-center"><a href="/" class="red btn btn-secondary">Delete Account</a></h2>
+        </div>
+      </div>
     </div>
-    <input type="submit" class="btn btn-primary">
-  </form>
-  <br>
-  <a href="/auth/logout" class="btn btn-secondary">Logout</a>
-  <br>
-  <a href="/" class="btn btn-secondary">Delete Account</a>
+  </div>
+
+
+
 
 </div>
 

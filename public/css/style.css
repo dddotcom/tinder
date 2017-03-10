@@ -1,5 +1,5 @@
 body {
-  background-color: LightGray;
+  background-color: #F8F8F8;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -19,22 +19,29 @@ body {
   margin: auto;
 }
 
+.carousel-control-next-icon, .carousel-control-prev-icon {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
 .potential-img {
-  position: absolute;
-  top:0px;
-  left: 0px;
+  min-height: 600px;
+  /*max-width: 404px;*/
   background-color: white;
   border: 2px black solid;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px #888888;
+  position:absolute;
+}
+
+.potential-img p {
+  padding: .5em;
 }
 
 .potential-img img{
-    height: 400px;
-    width: 400px;
-}
-
-.tinder-controls {
-  position: relative;
-  top: 600px;
+    height: 450px;
+    width: 450px;
+    border-radius: 10px;
 }
 
 .current-user {
@@ -73,4 +80,177 @@ body {
   display: block;
   width: 65%;
   border-radius: 40px;
+}
+
+.login-form {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px 0px;
+}
+
+.login-form input {
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.login-form label{
+  font-size: 1.2em;
+}
+
+.logo {
+  margin: 5px;
+  width: 50px;
+}
+
+.nav-btn {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background-color: lightGray;
+}
+
+.nav-btn i {
+  color: white;
+  line-height: inherit;
+}
+
+.nav-btn p {
+  color: white;
+  text-align: center;
+  font-size: 2em;
+}
+
+.nav-tinder {
+  border-radius: 40px;
+  width: 120px;
+  height: 60px;
+  background-color: lightGray;
+}
+
+.nav-tinder img {
+  width: 30px;
+}
+
+.nav-bar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.tinder-controls {
+  position: relative;
+  top: 630px;
+}
+
+.tinder-controls-zoom .btn{
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+.tinder-controls .btn {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+
+.match-text {
+  font-family: 'Lobster', cursive;
+}
+
+.match-pic {
+  border-radius: 50%;
+}
+
+.potential-img p {
+  font-size: 1em;
+  padding: 5px;
+  margin-bottom: 2px;
+}
+
+.submit-btn {
+  border-radius: 10px;
+}
+
+.settings .btn {
+  width: 100%;
+  padding: 15px;
+}
+
+.message-me p {
+  border: 1px black solid;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.message-potential p {
+  background-color: #00cc99;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 5px;
+  width: 30%;
+}
+
+.getNewPic {
+  border-radius: 50%;
+  position: absolute;
+  right: 148px;
+  bottom: -10px;
+}
+
+.revertPic {
+  border-radius: 50%;
+  position: absolute;
+  left: -2px;
+  top: -7px;
+  background-color: red;
+}
+
+.black {
+  color: black;
+}
+
+.red {
+  color: #bd362f;
+}
+
+.yellow {
+  color: 	#FFD700;
+}
+
+.green {
+  color:  #8ab92d;
+}
+
+.blue {
+  color: #0066ff;
+}
+
+.white {
+  color: white;
+}
+
+.gray {
+  color: gray;
+}
+
+.blue-background {
+  background-color: #0066ff;
+}
+
+.red-background {
+  background-color: #bd362f;
+}
+
+.green-background {
+  background-color: #8ab92d;
+}
+
+.white-background {
+  background-color: white;
+}
+
+.gray-background {
+  background-color: #F8F8F8;
 }

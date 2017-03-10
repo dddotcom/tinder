@@ -6,7 +6,7 @@ $(document).ready(function(){
 
   $('.carousel').carousel({
     interval: false
-  })
+  });
 
   $(".carousel").on('slide.bs.carousel', function(evt) {
   var textIndex = $(evt.relatedTarget).index();
@@ -22,7 +22,7 @@ $(document).ready(function(){
       method: "PUT",
       url: url,
       data: data,
-    }).done(function(data){
+    }).done(function(){
       // element.remove();
       window.location = "/profile";
     });
@@ -38,7 +38,7 @@ $(document).ready(function(){
         method: "POST",
         url: "/potentials/dislike/" + id,
         data: $(this).serialize(),
-      }).done(function(data){
+      }).done(function(){
         console.log("done adding to dislikes!");
         if (!document.URL.endsWith('/potentials')){
             window.location = "/potentials";
@@ -61,7 +61,7 @@ $(document).ready(function(){
         console.log("done adding to likes!");
         console.log(data);
         if(data.redirect){
-            window.location = data.redirect
+            window.location = data.redirect;
         }
          else if (!document.URL.endsWith('/potentials')){
             window.location = "/potentials";
@@ -83,7 +83,7 @@ $(document).ready(function(){
       }).done(function(data){
         console.log("done adding to likes as a superlike!");
         if(data.redirect){
-            window.location = data.redirect
+            window.location = data.redirect;
         }
          else if (!document.URL.endsWith('/potentials')){
             window.location = "/potentials";
@@ -96,7 +96,7 @@ $(document).ready(function(){
     e.preventDefault();
     var id = findGreatestZindex();
     $("#" + id).slideUp("slow", function(){
-      $(this).remove();
+      $(this).parent('.col-5').parent('.row').remove();
     });
   });
 
@@ -108,7 +108,7 @@ $(document).ready(function(){
     $.ajax({
       method: 'DELETE',
       url: '/profile/addInterest/' + interestId,
-    }).done(function(data){
+    }).done(function(){
       element.remove();
       window.location = '/profile';
     });
@@ -131,7 +131,7 @@ $(document).ready(function(){
     });
   });
 
-})
+});
 
 function findGreatestZindex(){
   var index_highest = -1;

@@ -1,11 +1,11 @@
 <div class="container">
-    <h1>
+    <h2>
       <a href="/chatroom">
-            <i class="fa fa-angle-left" aria-hidden="true"></i>
+            <i class="fa fa-angle-left black" aria-hidden="true"></i>
       </a>
       <img class="chatroom-pic-small" src=<%= match.profile_pics[0].url %> >
       <%= match.name %>
-    </h1>
+    </h2>
   <hr>
 
   <div class="container chatlog">
@@ -14,31 +14,58 @@
     allChats.sort(function(a,b){
       return b.createdAt - a.createdAt;
     }); %>
-    <% allChats.forEach(function(message){ %>
-      <% if(message.userId == currentUser.id){ %>
-        <div class="message-me text-right">
-          <p><%=message.content%></p>
-          <p><small><%= moment(message.createdAt).fromNow() %></small></p>
-        </div>
-      <% } else { %>
-        <div class="message-potential text-left">
-          <p>
-            <img class="chatroom-pic-xsmall" src=<%= match.profile_pics[0].url %> >
-            <%=message.content%>
-          </p>
-          <p><small><%= match.name %> <%= moment(message.createdAt).fromNow() %></small></p>
-        </div>
-      <% } %>
-    <% }); %>
+
+    <% if(allChats.length){ %>
+      <% allChats.forEach(function(message){ %>
+        <% if(message.userId == currentUser.id){ %>
+          <div class="message-me text-right">
+            <div class="row">
+              <div class="offset-8 col-4">
+              <p>
+                <%=message.content%>
+                <br>
+                <small><%= match.name %> <%= moment(message.createdAt).fromNow() %></small>
+              </p>
+              </div>
+          </div>
+        <% } else { %>
+          <div class="message-potential text-left">
+            <div class="row">
+              <div class="col-1">
+                <img class="chatroom-pic-xsmall" src=<%= match.profile_pics[0].url %> >
+              </div>
+              <div class="col-10">
+              <p class="">
+                <%=message.content%>
+                <br>
+                <small><%= match.name %> <%= moment(message.createdAt).fromNow() %></small>
+              </p>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      <% }); %>
+    <% } else { %>
+      <p class="gray"><i>Don't be shy, start a conversation!</i></p>
+    <% } %>
+
+
   </div>
 
 
   <hr>
 
   <form method="POST" action="/chatroom/<%=match.id%>">
-    <div class="form-group">
-      <input type="text" name="content" class="form-control" placeholder="Send a message...">
-    </div>
-    <input type="submit" class="btn btn-danger" value='>'>
+      <div class="form-group row">
+        <div class="col-11">
+          <input type="text" name="content" class="form-control form-control-lg" placeholder="Send a message...">
+        </div>
+        <div class="col-1">
+          <button type="submit" class="btn btn-secondary">
+            <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
   </form>
 </div>
