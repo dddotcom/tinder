@@ -71,6 +71,13 @@ body {
   /*visibility: hidden;*/
 }
 
+.no-potentials {
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 400px;
+  z-index: -10;
+}
+
 .potential-img {
   min-height: 600px;
   /*max-width: 404px;*/
