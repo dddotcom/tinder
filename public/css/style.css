@@ -23,6 +23,53 @@ body {
   background-color: rgba(0,0,0,0.8);
 }
 
+.like-text{
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 5px solid green;
+  color: green;
+  border-radius: 10px;
+  -ms-transform: rotate(336deg); /* IE 9 */
+  -webkit-transform: rotate(336deg); /* Chrome, Safari, Opera */
+  transform: rotate(336deg);
+  /*visibility: hidden;*/
+}
+
+.super-like-text {
+  position: absolute;
+  top: 20px;
+  left: 102px;
+  padding: 10px 20px;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 5px solid  #0066ff;
+  color:  #0066ff;
+  border-radius: 10px;
+  /*visibility: hidden;*/
+}
+
+.nope-text {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  padding: 10px 20px;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 5px solid #bd362f;
+  color: #bd362f;
+  border-radius: 10px;
+  -ms-transform: rotate(23deg); /* IE 9 */
+  -webkit-transform: rotate(23deg); /* Chrome, Safari, Opera */
+  transform: rotate(23deg);
+  /*visibility: hidden;*/
+}
 
 .potential-img {
   min-height: 600px;
@@ -32,10 +79,6 @@ body {
   border-radius: 10px;
   box-shadow: 10px 10px 5px #888888;
   position:absolute;
-}
-
-.potential-img p {
-  padding: .5em;
 }
 
 .potential-img img{
@@ -164,7 +207,8 @@ body {
 
 .potential-img p {
   font-size: 1em;
-  padding: 5px;
+  /*padding: 5px;*/
+  padding: .5em;
   margin-bottom: 2px;
 }
 

@@ -3,6 +3,9 @@ var homeText = ["Discover New and Interesting People", "Swipe Right to anonymous
 
 $(document).ready(function(){
   console.log("DOM ready");
+  $(".like-text").hide();
+  $(".nope-text").hide();
+  $(".super-like-text").hide();
 
   $('.carousel').carousel({
     interval: false
@@ -31,18 +34,20 @@ $(document).ready(function(){
   $(".btn-dislike").click(function(e){
     e.preventDefault();
     var id = findGreatestZindex();
-    $( "#" + id ).hide( "slide", { direction: "left"  }, "slow", function() {
-      $("#" + id).remove();
-      //now post to database
-      $.ajax({
-        method: "POST",
-        url: "/potentials/dislike/" + id,
-        data: $(this).serialize(),
-      }).done(function(){
-        console.log("done adding to dislikes!");
-        if (!document.URL.endsWith('/potentials')){
-            window.location = "/potentials";
-        }
+    $("#" + id).find(".nope-text").fadeIn("slow", function(){
+      $( "#" + id ).hide( "slide", { direction: "left"  }, "slow", function() {
+        $("#" + id).remove();
+        //now post to database
+        $.ajax({
+          method: "POST",
+          url: "/potentials/dislike/" + id,
+          data: $(this).serialize(),
+        }).done(function(){
+          console.log("done adding to dislikes!");
+          if (!document.URL.endsWith('/potentials')){
+              window.location = "/potentials";
+          }
+        });
       });
     });
   });
@@ -50,22 +55,25 @@ $(document).ready(function(){
   $(".btn-like").click(function(e){
     e.preventDefault();
     var id = findGreatestZindex();
-    $( "#" + id ).hide( "slide", { direction: "right"  }, "slow", function() {
-      $("#" + id).remove();
-      //now post to database
-      $.ajax({
-        method: "POST",
-        url: "/potentials/like/" + id,
-        data: $(this).serialize(),
-      }).done(function(data){
-        console.log("done adding to likes!");
-        console.log(data);
-        if(data.redirect){
-            window.location = data.redirect;
-        }
-         else if (!document.URL.endsWith('/potentials')){
-            window.location = "/potentials";
-        }
+    $("#" + id).find(".like-text").fadeIn("slow", function(){
+      $( "#" + id ).hide( "slide", { direction: "right"  }, "slow", function() {
+        $(this).parent('.col-5').parent('.row').remove();
+        $("#" + id).remove();
+        //now post to database
+        $.ajax({
+          method: "POST",
+          url: "/potentials/like/" + id,
+          data: $(this).serialize(),
+        }).done(function(data){
+          console.log("done adding to likes!");
+          console.log(data);
+          if(data.redirect){
+              window.location = data.redirect;
+          }
+           else if (!document.URL.endsWith('/potentials')){
+              window.location = "/potentials";
+          }
+        });
       });
     });
   });
@@ -73,21 +81,24 @@ $(document).ready(function(){
   $(".btn-superlike").click(function(e){
     e.preventDefault();
     var id = findGreatestZindex();
-    $( "#" + id ).slideUp( "slow", function() {
-      $(this).remove();
-      //now post to database
-      $.ajax({
-        method: "POST",
-        url: "/potentials/superlike/" + id,
-        data: $(this).serialize(),
-      }).done(function(data){
-        console.log("done adding to likes as a superlike!");
-        if(data.redirect){
-            window.location = data.redirect;
-        }
-         else if (!document.URL.endsWith('/potentials')){
-            window.location = "/potentials";
-        }
+    $("#" + id).find(".super-like-text").fadeIn("slow", function(){
+      $( "#" + id ).hide( "slide", { direction: "up" }, "slow", function() {
+        $(this).parent('.col-5').parent('.row').remove();
+        $("#" + id).remove();
+        //now post to database
+        $.ajax({
+          method: "POST",
+          url: "/potentials/superlike/" + id,
+          data: $(this).serialize(),
+        }).done(function(data){
+          console.log("done adding to likes as a superlike!");
+          if(data.redirect){
+              window.location = data.redirect;
+          }
+           else if (!document.URL.endsWith('/potentials')){
+              window.location = "/potentials";
+          }
+        });
       });
     });
   });
@@ -95,8 +106,11 @@ $(document).ready(function(){
   $(".btn-next").click(function(e){
     e.preventDefault();
     var id = findGreatestZindex();
-    $("#" + id).slideUp("slow", function(){
-      $(this).parent('.col-5').parent('.row').remove();
+    $("#" + id).find(".super-like-text").fadeIn("slow", function(){
+      $( "#" + id ).hide( "slide", { direction: "up"  }, "slow", function() {
+        $(this).parent('.col-5').parent('.row').remove();
+        $("#" + id).remove();
+      });
     });
   });
 
