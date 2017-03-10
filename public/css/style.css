@@ -197,12 +197,22 @@ body {
   border-radius: 50%;
 }
 
+.match .btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 0.8em;
+}
+
 .match-text {
   font-family: 'Lobster', cursive;
 }
 
 .match-pic {
   border-radius: 50%;
+  margin-top: 50px;
+  width: 300px;
+  height: 300px;
+  border: 10px lightGray solid;
 }
 
 .potential-img p {
@@ -231,7 +241,7 @@ body {
 .message-potential p {
   background-color: #00cc99;
   border-radius: 10px;
-  margin: 5px;
+  margin: 15px;
   padding: 5px;
   width: 30%;
 }

@@ -6,8 +6,8 @@ var giphy = require('giphy-api')();
 var async = require('async');
 var router = express.Router();
 
-var catUrl = '../images/catDefault.jpg';
-var dogUrl = '../images/dogDefault.jpeg';
+var catUrl = '/images/catDefault.jpg';
+var dogUrl = '/images/dogDefault.jpeg';
 
 router.get('/', isLoggedIn, function(req, res){
   db.user.find({
