@@ -1,15 +1,22 @@
-<div class="container">
-  <a href="/profile"><i class="fa fa-angle-left" aria-hidden="true"></i> Back</a>
-  <h1>Edit Profile</h1>
+<h2>
+  <a href="/profile"><i class="fa fa-angle-left black" aria-hidden="true"></i></a>
+  Edit Profile
+</h2>
+<hr>
 
+<div class="container">
   <br>
   <% user.profile_pics.forEach(function(pic){ %>
-    <img class="profile-pic profile-pic-<%= pic.id %>" src="<%= pic.url %>">
-    <a href="/profile/getNewPic/<%=pic.id%>" class="btn btn-danger getNewPic"><i class="fa fa-random" aria-hidden="true"></i></a>
-    <a href="/profile/revertPic/<%=pic.id%>" class="btn btn-danger revertPic">Revert</a>
+    <div class="row">
+      <div class="col-12 col-sm-4">
+        <img class="profile-pic profile-pic-<%= pic.id %>" src="<%= pic.url %>">
+        <a href="/profile/getNewPic/<%=pic.id%>" class="btn gray-background getNewPic"><i class="fa fa-random fa-lg black" aria-hidden="true"></i></a>
+        <a href="/profile/revertPic/<%=pic.id%>" class="red-background btn btn-danger revertPic"><i class="white fa fa-times" aria-hidden="true"></i></a>
+      </div>
+    </div>
   <% }) %>
 
-  <form action="/profile" class="put-form">
+  <form action="/profile" class="put-form login-form">
     <div class="form-group">
       <label for="about">About <%= user.name %></label>
       <input type="text" name="about" class="form-control" value="<%= user.about %>">

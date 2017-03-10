@@ -1,53 +1,65 @@
-<div class="container">
-  <header>
-    <a href="/profile" class="btn btn-secondary"><i class="fa fa-user-circle fa-2x" aria-hidden="true"></i></a>
-    <a href="#" class="btn btn-danger"><i class="fa fa-tint fa-2x" aria-hidden="true"></i></a>
-    <a href="/chatroom" class="btn btn-secondary"><i class="fa fa-weixin fa-2x" aria-hidden="true"></i></a>
-  </header>
+<div class="row nav-bar">
+  <div class="col-12 col-sm-4 text-center">
+      <a href="/profile" class="nav-btn btn btn-secondary"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i></a>
+  </div>
+  <div class="col-12 col-sm-4 text-center">
+    <a href="/potentials" class="nav-tinder btn btn-danger red-background">
+      <img src="/images/logo-white.png">
+    </a>
+  </div>
+  <div class="col-12 col-sm-4 text-center">
+    <a href="/chatroom" class="nav-btn btn btn-secondary"><p>...</p></a>
+  </div>
 </div>
-<br>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 potentials">
       <% var z = 0; potentialUsers.forEach(function(potentialUser){ %>
-        <div class="potential-img potential-user" id="<%=potentialUser.id%>" style="z-index:<%=z%>;">
-          <a href="/potentials/<%=potentialUser.id%>"><img src=<%=potentialUser.profile_pics[0].url%>></a>
-
-          <p><strong><%=potentialUser.name%></strong>, <%=potentialUser.age%></p>
-          <% if(potentialUser.school){ %>
-            <p>Studies at <%= potentialUser.school %> </p>
-          <% } %>
-          <% if(potentialUser.work){ %>
-            <p>Works at <%= potentialUser.work %> </p>
-          <% } %>
-          <% if(!potentialUser.work && !potentialUser.school){ %>
-            <p>Does nothing</p>
-          <% } %>
+        <div class="row justify-content-center">
+          <div class="col-5">
+            <div class="potential-img potential-user" id="<%=potentialUser.id%>" style="z-index:<%=z%>;">
+              <span class="like-text">LIKE</span>
+              <span class="nope-text">NOPE</span>
+              <span class="super-like-text blue">SUPER-LIKE</span>
+              <a href="/potentials/<%=potentialUser.id%>">
+                <img src=<%=potentialUser.profile_pics[0].url%>>
+              </a>
+              <p><strong><%=potentialUser.name%></strong>, <%=potentialUser.age%></p>
+              <% if(potentialUser.school){ %>
+                <p>Studies at <%= potentialUser.school %> </p>
+              <% } %>
+              <% if(potentialUser.work){ %>
+                <p>Works at <%= potentialUser.work %> </p>
+              <% } %>
+              <% if(!potentialUser.work && !potentialUser.school){ %>
+                <p>Does nothing</p>
+              <% } %>
+          </div>
         </div>
+      </div>
       <% z+= 10; }); %>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-12 tinder-controls">
-
-      <button class="btn btn-primary btn-next">
-        <i class="fa fa-repeat fa-2x" aria-hidden="true"></i>
-      </button>
-
-      <button class="btn btn-primary btn-dislike">
-        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
-      </button>
-
-      <button class="btn btn-primary btn-like">
-        <i class="fa fa-heart fa-2x" aria-hidden="true"></i>
-      </button>
-
-      <button class="btn btn-primary btn-superlike">
-        <i class="fa fa-star fa-2x" aria-hidden="true"></i>
-      </button>
-
-    </div>
-  </div>
-
-</div>
+      <div class="row tinder-controls">
+        <div class="col-4 offset-4">
+          <div class="row">
+            <div class="col-3 text-center">
+              <button class="btn btn-secondary btn-next">
+                <i class="fa fa-repeat fa-2x yellow" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="col-3 text-center">
+              <button class="btn btn-secondary btn-dislike">
+                <i class="fa fa-times fa-2x red" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="col-3 text-center">
+              <button class="btn btn-secondary btn-like">
+                <i class="fa fa-heart fa-2x green" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="col-3 text-center">
+              <button class="btn btn-secondary btn-superlike">
+                <i class="fa fa-star fa-2x blue" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- </div> -->

@@ -1,40 +1,47 @@
-<h1>Sign up</h1>
+<div class="container text-center">
+  <a href="/"><img class="logo" src="/images/logo.png"></a>
+  <h2>CREATE AN ACCOUNT</h2>
+</div>
 
-<form method="POST" action="/auth/signup">
-  <div class="form-group">
-    <label for="email">Email*: </label>
-    <input type="text" name="email" class="form-control" placeholder="Type your email" required>
+<div class="row">
+  <div class="col-xs-12 login-form">
+    <form method="POST" action="/auth/signup">
+      <div class="form-group">
+        <label for="email">Email*: </label>
+        <input type="text" name="email" class="form-control" placeholder="Type your email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password*: </label>
+        <input type="password" name="password" class="form-control" placeholder="Type your password" required>
+      </div>
+      <div class="form-group">
+        <label for="name">Name*: </label>
+        <input type="text" name="name" class="form-control" placeholder="Type your name" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age*: </label>
+        <input type="text" name="age" class="form-control" placeholder="Type your age" required>
+      </div>
+      <div class="form-group">
+        <label for="school">School: </label>
+        <input type="text" name="school" class="form-control" placeholder="Type your school">
+      </div>
+      <div class="form-group">
+        <label for="work">Work: </label>
+        <input type="text" name="work" class="form-control" placeholder="Type your work">
+      </div>
+      <div class="form-group">
+        <label for="interests">Interests*: </label>
+        <input type="text" name="interests" class="form-control" placeholder="Comma-separated interests" required>
+      </div>
+      <div class="form-group">
+        <label for="animalId">I am a*: </label>
+        <select name="animalId" required>
+          <option value="1" selected="selected">Cat</option>
+          <option value="2">Dog</option>
+        </select>
+      </div>
+      <input type="submit" value="SIGNUP" class="btn btn-danger">
+    </form>
   </div>
-  <div class="form-group">
-    <label for="password">Password*: </label>
-    <input type="password" name="password" class="form-control" placeholder="Type your password" required>
-  </div>
-  <div class="form-group">
-    <label for="name">Name*: </label>
-    <input type="text" name="name" class="form-control" placeholder="Type your name" required>
-  </div>
-  <div class="form-group">
-    <label for="age">Age*: </label>
-    <input type="text" name="age" class="form-control" placeholder="Type your age" required>
-  </div>
-  <div class="form-group">
-    <label for="school">School: </label>
-    <input type="text" name="school" class="form-control" placeholder="Type your school">
-  </div>
-  <div class="form-group">
-    <label for="work">Work: </label>
-    <input type="text" name="work" class="form-control" placeholder="Type your work">
-  </div>
-  <div class="form-group">
-    <label for="interests">Interests*: </label>
-    <input type="text" name="interests" class="form-control" placeholder="Comma-separated interests" required>
-  </div>
-  <div class="form-group">
-    <label for="animalId">I am a*: </label>
-    <select name="animalId" required>
-      <option value="1" selected="selected">Cat</option>
-      <option value="2">Dog</option>
-    </select>
-  </div>
-  <input type="submit" value="SIGNUP" class="btn btn-success">
-</form>
+</div>

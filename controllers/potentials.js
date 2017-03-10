@@ -157,7 +157,6 @@ router.post('/superlike/:potentialId', isLoggedIn, function(req, res){
     }).then(function(match){
       if(match){
         console.log("FOUND A MATCH! " + like.userId + " " + like.userIdLiked );
-        //TODO: fix this
         res.send({
           "redirect":"/potentials/match/" + like.userIdLiked
         });
