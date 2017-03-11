@@ -178,6 +178,16 @@ $(document).ready(function(){
     });
   });
 
+  $(".delete-user").click(function(e){
+    e.preventDefault();
+    $.ajax({
+      method: 'DELETE',
+      url:'/profile',
+    }).done(function(){
+      window.location = '/';
+    });
+  });
+
   $(".getNewPic").click(function(e){
     e.preventDefault();
     var element = $(this);
