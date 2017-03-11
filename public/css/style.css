@@ -94,6 +94,11 @@ body {
     border-radius: 10px;
 }
 
+.pic-show {
+  height: 400px;
+  width: 400px;
+}
+
 .current-user {
   position: relative;
   top: 700px;
