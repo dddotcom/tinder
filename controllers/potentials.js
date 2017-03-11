@@ -82,10 +82,10 @@ router.post('/dislike/:potentialId', isLoggedIn, function(req, res){
   }).spread(function(dislike, wasCreated){
     if(wasCreated){
       //good
-      req.flash("success", "Dislike added for " + dislike.userId + " : " + dislike.userIdDisliked);
+      // req.flash("success", "Dislike added for " + dislike.userId + " : " + dislike.userIdDisliked);
       res.send({message: 'successful dislike'});
     } else {
-      req.flash("error", "you've already disliked this guy");
+      // req.flash("error", "you've already disliked this guy");
       res.send({message: 'unsuccessful dislike'});
     }
   }).catch(function(err){
@@ -106,9 +106,9 @@ router.post('/like/:potentialId', isLoggedIn, function(req, res){
   }).spread(function(like, wasCreated){
     if(wasCreated){
       //good
-      req.flash("success", "Like added for " + like.userId + " : " + like.userIdLiked);
+      // req.flash("success", "Like added for " + like.userId + " : " + like.userIdLiked);
     } else {
-      req.flash("error", "you've already liked this guy");
+      // req.flash("error", "you've already liked this guy");
     }
 
     //search for matching like
@@ -147,9 +147,9 @@ router.post('/superlike/:potentialId', isLoggedIn, function(req, res){
   }).spread(function(like, wasCreated){
     if(wasCreated){
       //good
-      req.flash("success", "SuperLike added for " + like.userId + " : " + like.userIdLiked);
+      // req.flash("success", "SuperLike added for " + like.userId + " : " + like.userIdLiked);
     } else {
-      req.flash("error", "you've already superliked this guy");
+      // req.flash("error", "you've already superliked this guy");
     }
     //search for matching like
     db.like.findOne({

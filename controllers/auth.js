@@ -11,7 +11,7 @@ router.get('/login', function(req, res){
 
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/potentials",
-  successFlash: "You successfully logged in",
+  // successFlash: "You successfully logged in",
   failureRedirect: "/auth/login",
   failureFlash: "Invalid credentials"
 }));
@@ -78,7 +78,7 @@ router.post('/signup', function(req, res){
               user.addProfile_pic(newPic);
               passport.authenticate("local", {
                 successRedirect: "/potentials",
-                successFlash: "Account created and logged in"
+                // successFlash: "Account created and logged in"
               })(req,res);
             });
           }); //end of giphy
@@ -109,9 +109,9 @@ router.post('/signup', function(req, res){
 
   router.get("/callback/facebook", passport.authenticate("facebook", {
     successRedirect: "/potentials",
-    successFlash: "You logged in with FBOOK",
+    // successFlash: "You logged in with Facebook",
     failureRedirect: "/auth/login",
-    failureFlash: "fbook won't log you in"
+    failureFlash: "Error logging in with Facebook"
   }));
 
 module.exports = router;
