@@ -37,7 +37,7 @@ body {
   -ms-transform: rotate(336deg); /* IE 9 */
   -webkit-transform: rotate(336deg); /* Chrome, Safari, Opera */
   transform: rotate(336deg);
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 
 .super-like-text {
@@ -51,7 +51,7 @@ body {
   border: 5px solid  #0066ff;
   color:  #0066ff;
   border-radius: 10px;
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 
 .nope-text {
@@ -68,7 +68,7 @@ body {
   -ms-transform: rotate(23deg); /* IE 9 */
   -webkit-transform: rotate(23deg); /* Chrome, Safari, Opera */
   transform: rotate(23deg);
-  /*visibility: hidden;*/
+  visibility: hidden;
 }
 
 .no-potentials {

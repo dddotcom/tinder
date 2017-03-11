@@ -1,11 +1,13 @@
 var homeText = ["Discover New and Interesting People", "Swipe Right to anonymously like someone or Swipe Left to pass",
 "If they also Swipe Right, It's a Match!", "Only people you've matched with can message you"];
 
+$(".like-text").css('visibility', 'visible').hide();
+$(".nope-text").css('visibility', 'visible').hide();
+$(".super-like-text").css('visibility', 'visible').hide();
+
 $(document).ready(function(){
   console.log("DOM ready");
-  $(".like-text").hide();
-  $(".nope-text").hide();
-  $(".super-like-text").hide();
+
 
   $('.carousel').carousel({
     interval: false
