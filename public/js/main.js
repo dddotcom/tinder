@@ -106,11 +106,9 @@ $(document).ready(function(){
   $(".btn-next").click(function(e){
     e.preventDefault();
     var id = findGreatestZindex();
-    $("#" + id).find(".super-like-text").fadeIn("slow", function(){
-      $( "#" + id ).hide( "slide", { direction: "up"  }, "slow", function() {
-        $(this).parent('.col-5').parent('.row').remove();
-        $("#" + id).remove();
-      });
+    $( "#" + id ).hide( "slide", { direction: "up"  }, "slow", function() {
+      $(this).parent('.col-5').parent('.row').remove();
+      $("#" + id).remove();
     });
   });
 
