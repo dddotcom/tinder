@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tinder 4 Animals</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
@@ -11,18 +12,11 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    
-    <div class="container">
 
-        <% include partials/alerts %>
+    <% include partials/alerts %>
 
-        <%- body %>
+    <%- body %>
 
-        <br>
-
-          <!-- <p class="current-user"><strong>User Object: </strong><%- JSON.stringify(currentUser) %></p> -->
-
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>

@@ -3,7 +3,7 @@
       <a href="/chatroom">
             <i class="fa fa-angle-left black" aria-hidden="true"></i>
       </a>
-      <img class="chatroom-pic-small" src=<%= match.profile_pics[0].url %> >
+      <img class="chatroom-pic-small rounded-circle img-fluid" src=<%= match.profile_pics[0].url %> >
       <%= match.name %>
     </h2>
   <hr>
@@ -21,7 +21,7 @@
           <div class="message-me text-right">
             <div class="row">
               <div class="offset-8 col-4">
-              <p>
+              <p class="rounded">
                 <%=message.content%>
                 <br>
                 <small><%= moment(message.createdAt).fromNow() %></small>
@@ -31,13 +31,13 @@
         <% } else { %>
           <div class="message-potential text-left">
             <div class="row">
-              <div class="col-1">
+              <div class="col-12 col-sm-1">
                 <a href="/potentials/<%=match.id%>">
-                  <img class="chatroom-pic-xsmall" src=<%= match.profile_pics[0].url %> >
+                  <img class="chatroom-pic-xsmall rounded-circle" src=<%= match.profile_pics[0].url %> >
                 </a>
               </div>
-              <div class="col-10">
-              <p class="">
+              <div class="col-12 col-sm-10">
+              <p class="rounded">
                 <%=message.content%>
                 <br>
                 <small><%= match.name %> <%= moment(message.createdAt).fromNow() %></small>
@@ -59,10 +59,10 @@
 
   <form method="POST" action="/chatroom/<%=match.id%>">
       <div class="form-group row">
-        <div class="col-11">
+        <div class="col-12 col-sm-11">
           <input type="text" name="content" class="form-control form-control-lg" placeholder="Send a message...">
         </div>
-        <div class="col-1">
+        <div class="col-12 col-sm-1">
           <button type="submit" class="btn btn-secondary">
             <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i>
           </button>

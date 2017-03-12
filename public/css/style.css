@@ -3,8 +3,13 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-#carousel-text {
-  margin: 30px auto;
+footer {
+  /*position: fixed;*/
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  margin-bottom: 2px;
+
 }
 
 .modal-content {
@@ -16,12 +21,21 @@ body {
   background-color: rgba(0,0,0,0.6);
 }
 
-.modal-show {
+.get-tinder-plus .modal-content {
   background-color: #F8F8F8;
+}
+
+.get-tinder-plus img {
+  width: 40%;
 }
 
 .btn-transparent {
   border: 5px #bd362f solid;
+}
+
+.interest {
+  border: 1px #bd362f solid;
+  color: #bd362f;
 }
 
 .btn-transparent:hover {
@@ -30,18 +44,21 @@ body {
 
 .carousel {
   margin: 3em auto;
+  height: 25em;
 }
 
-.carousel-inner > .item > img {
+.carousel-inner > .item > a {
     margin: 0 auto;
 }
 
-.carousel-inner img {
-  margin: auto;
+.carousel-item a {
+margin: auto;
+height: 25em;
 }
 
-.carousel-control-next-icon, .carousel-control-prev-icon {
-  background-color: rgba(0,0,0,0.8);
+.carousel-item img {
+margin: auto;
+height: 25em;
 }
 
 .like-text{
@@ -93,25 +110,25 @@ body {
 }
 
 .no-potentials {
-  position: absolute;
-  margin-top: 300px;
-  margin-left: 400px;
-  z-index: -10;
+  text-align: center;
+  z-index: 0;
+  height: 75vh;
 }
 
-.potential-img {
-  min-height: 600px;
-  /*max-width: 404px;*/
-  background-color: white;
-  border: 2px black solid;
+.potential-card-row {
+  width: 111vw;
+}
+
+.potential-card {
+  min-height: 32.5em;
   border-radius: 10px;
   box-shadow: 10px 10px 5px #888888;
   position:absolute;
 }
 
-.potential-img img{
-    height: 450px;
-    width: 450px;
+.potential-card img{
+    height: 23.125em;
+    width: 23.125em;
     border-radius: 10px;
 }
 
@@ -126,35 +143,37 @@ body {
 }
 
 .chatroom-pic {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 3px black solid;
+  width: 12.5em;
+  height: 12.5em;
+  border: 0.1875em black solid;
 }
 
 .chatroom-pic-small {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 3px black solid;
+  width: 4em;
+  height: 4em;
+  border:  0.1875em black solid;
 }
 
 .chatroom-pic-xsmall {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px black solid;
+  width: 5em;
+  height: 5em;
+  border:  0.1875em black solid;
 }
 
 .profile-pic {
   width: 200px;
 }
 
+.tinder-plus-alert {
+  display: none;
+}
+
 .login-btn {
-  padding: 20px 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin: 10px auto;
   display: block;
-  width: 65%;
+  width: 50%;
   border-radius: 40px;
 }
 
@@ -181,9 +200,10 @@ body {
 
 .nav-btn {
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 3.75em;
+  height: 3.75em;
   background-color: lightGray;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
 .nav-btn i {
@@ -202,6 +222,7 @@ body {
   width: 120px;
   height: 60px;
   background-color: lightGray;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
 .nav-tinder img {
@@ -209,25 +230,20 @@ body {
 }
 
 .nav-bar {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
-.tinder-controls {
-  position: relative;
-  top: 630px;
-}
-
-.tinder-controls-zoom .btn{
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
+.nav-bar-other {
+  margin-top: 1em;
+  margin-left: 1em;
 }
 
 .tinder-controls .btn {
   width: 75px;
   height: 75px;
   border-radius: 50%;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
 .match .btn {
@@ -248,13 +264,6 @@ body {
   border: 10px lightGray solid;
 }
 
-.potential-img p {
-  font-size: 1em;
-  /*padding: 5px;*/
-  padding: .5em;
-  margin-bottom: 2px;
-}
-
 .submit-btn {
   border-radius: 10px;
 }
@@ -266,32 +275,30 @@ body {
 
 .message-me p {
   border: 1px black solid;
-  border-radius: 10px;
   margin: 5px;
   padding: 5px;
 }
 
 .message-potential p {
   background-color: #00cc99;
-  border-radius: 10px;
   margin: 15px;
   padding: 5px;
   width: 30%;
 }
 
 .getNewPic {
-  border-radius: 50%;
   position: absolute;
   right: 148px;
   bottom: -10px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
 .revertPic {
-  border-radius: 50%;
   position: absolute;
   left: -2px;
   top: -7px;
   background-color: red;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
 .black {

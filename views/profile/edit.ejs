@@ -1,6 +1,9 @@
-<h2>
-  <a href="/profile" class="black"><i class="fa fa-angle-left" aria-hidden="true"></i> Edit Profile</a>
-</h2>
+<div class="nav-bar-other">
+  <h2>
+    <a href="/profile" class="black"><i class="fa fa-angle-left" aria-hidden="true"></i> Edit Profile</a>
+  </h2>
+</div>
+
 <hr>
 
 <div class="container">
@@ -9,8 +12,8 @@
     <div class="row">
       <div class="col-12 col-sm-4">
         <img class="profile-pic profile-pic-<%= pic.id %>" src="<%= pic.url %>">
-        <a href="/profile/getNewPic/<%=pic.id%>" class="btn gray-background getNewPic"><i class="fa fa-random fa-lg black" aria-hidden="true"></i></a>
-        <a href="/profile/revertPic/<%=pic.id%>" class="red-background btn btn-danger revertPic"><i class="white fa fa-times" aria-hidden="true"></i></a>
+        <a href="/profile/getNewPic/<%=pic.id%>" class="btn gray-background getNewPic rounded-circle"><i class="fa fa-random fa-lg black" aria-hidden="true"></i></a>
+        <a href="/profile/revertPic/<%=pic.id%>" class="red-background btn btn-danger revertPic rounded-circle"><i class="white fa fa-times" aria-hidden="true"></i></a>
       </div>
     </div>
   <% }) %>
@@ -32,7 +35,7 @@
       <label for="interests">Interests: </label>
       <br>
       <% user.interests.forEach(function(interest){ %>
-        <p class="btn btn-secondary"><%= interest.name %></p>
+        <p class="btn btn-secondary interest"><%= interest.name %></p>
       <% }); %>
     </div>
     <input type="submit" class="btn btn-danger" value="Save Changes">
