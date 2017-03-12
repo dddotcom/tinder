@@ -121,6 +121,7 @@ height: 25em;
 
 .potential-card {
   min-height: 520px;
+  max-width: 372px;
   border-radius: 10px;
   box-shadow: 10px 10px 5px #888888;
   position:absolute;
@@ -361,6 +362,7 @@ height: 25em;
 
   .potential-card {
     min-height: 450px;
+    max-width: 302px;
   }
 }
 
@@ -405,5 +407,6 @@ height: 25em;
 
   .potential-card {
     min-height: 450px;
+    max-width: 302px;
   }
 }
