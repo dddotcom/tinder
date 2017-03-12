@@ -114,6 +114,9 @@ router.put('/', isLoggedIn, function(req, res){
     where: {id: req.user.id}
   }).then(function(userUpdated){
     res.send({message: 'successful update of user profile'});
+  }).catch(function(err){
+    req.flash("error", err.message);
+    res.send({"error": true});
   });
 });
 

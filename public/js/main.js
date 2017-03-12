@@ -27,9 +27,13 @@ $(document).ready(function(){
       method: "PUT",
       url: url,
       data: data,
-    }).done(function(){
+    }).done(function(data){
       // element.remove();
-      window.location = "/profile";
+      if(data.error){
+        window.location = "/profile/edit";
+      } else {
+        window.location = "/profile";
+      }
     });
   });
 

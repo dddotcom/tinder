@@ -7,8 +7,24 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     password: DataTypes.STRING,
     age: DataTypes.INTEGER,
-    school: DataTypes.STRING,
-    work: DataTypes.STRING,
+    school: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [0, 30], //[minLength, maxLength],
+          msg: "School info cannot be longer than 30 characters"
+        }
+      }
+    },
+    work: {
+      type: DataTypes.STRING,
+      validate: {
+        len: {
+          args: [0, 30], //[minLength, maxLength],
+          msg: "Work info cannot be longer than 30 characters"
+        }
+      }
+    },
     about: DataTypes.TEXT,
     animalId: DataTypes.INTEGER,
     interestedIn: DataTypes.INTEGER,
