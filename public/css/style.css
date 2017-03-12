@@ -4,7 +4,7 @@ body {
 }
 
 footer {
-  position: fixed;
+  /*position: fixed;*/
   bottom: 0;
   width: 100%;
   height: auto;
@@ -21,12 +21,21 @@ footer {
   background-color: rgba(0,0,0,0.6);
 }
 
-.modal-show {
+.get-tinder-plus .modal-content {
   background-color: #F8F8F8;
+}
+
+.get-tinder-plus img {
+  width: 40%;
 }
 
 .btn-transparent {
   border: 5px #bd362f solid;
+}
+
+.interest {
+  border: 1px #bd362f solid;
+  color: #bd362f;
 }
 
 .btn-transparent:hover {
@@ -155,8 +164,13 @@ height: 25em;
   width: 200px;
 }
 
+.tinder-plus-alert {
+  display: none;
+}
+
 .login-btn {
-  padding: 20px 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin: 10px auto;
   display: block;
   width: 50%;
@@ -226,8 +240,8 @@ height: 25em;
 }
 
 .tinder-controls .btn {
-  width: 5.6875em;
-  height: 5.6875em;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }

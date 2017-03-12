@@ -78,11 +78,9 @@ router.post('/signup', function(req, res){
               user.addProfile_pic(newPic);
               passport.authenticate("local", {
                 successRedirect: "/potentials",
-                // successFlash: "Account created and logged in"
               })(req,res);
             });
           }); //end of giphy
-
         });//end of forEachSeries
       }
     } else {

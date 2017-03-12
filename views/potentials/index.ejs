@@ -1,3 +1,7 @@
+<div class="alert alert-danger tinder-plus-alert" role="alert">
+  Oh no! You were not able to purchase <strong>Tinder 4 Animals Plus</strong> :(
+</div>
+
 <div class="row nav-bar">
   <div class="col-12 col-sm-4 text-center">
       <a href="/profile" class="nav-btn btn btn-secondary"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i></a>
@@ -78,12 +82,58 @@
   </div>
 </div>
 
+<div class="modal fade get-tinder-plus" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content text-center">
+      <h3><strong>Get Tinder 4 Animals Plus</strong></h3>
+      <div class="text-center">
+          <img src="/images/tinder-plus.svg">
+      </div>
+      <i class="fa fa-repeat fa-3x yellow" aria-hidden="true"></i>
+      <h3><strong>Rewind Your Last Swipe</strong></h3>
+      <h4>Go back and swipe again</h4>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-4 text-center">
+          <div class="card">
+            <div class="card-block gray">
+              <h3 class="card-title"><strong>12</strong><br><small>months</small></h3>
+              <p class="card-text">$4000.59/mo</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <div class="card">
+            <div class="card-block red">
+              <h3 class="card-title"><strong>6</strong><br><small>months</small></h3>
+              <p class="card-text">$5000.84/mo</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <div class="card">
+            <div class="card-block gray">
+              <h3 class="card-title"><strong>1</strong><br><small>month</small></h3>
+              <p class="card-text">$9000.99/mo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="text-center btn btn-danger login-btn get-tinder-plus-btn"  data-toggle="modal" data-target=".get-tinder-plus">CONTINUE</button>
+
+    </div>
+  </div>
+</div>
+
 <footer class="footer">
   <div class="row tinder-controls">
     <div class="col-4 offset-4">
       <div class="row">
         <div class="col-3 text-center">
-          <button class="btn btn-secondary btn-next">
+          <button class="btn btn-secondary btn-next" data-toggle="modal" data-target=".get-tinder-plus">
             <i class="fa fa-repeat fa-2x yellow" aria-hidden="true"></i>
           </button>
         </div>

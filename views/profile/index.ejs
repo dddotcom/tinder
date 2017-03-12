@@ -79,7 +79,7 @@
     <p> <%= user.interests.length %> interests </p>
 
     <% user.interests.forEach(function(interest){ %>
-      <button id="<%=interest.id%>" class="btn btn-secondary delete-interest"><i class="fa fa-close" aria-hidden="true"></i>  <%= interest.name %></button>
+      <button id="<%=interest.id%>" class="btn btn-secondary delete-interest interest"><i class="fa fa-close" aria-hidden="true"></i>  <%= interest.name %></button>
     <% }); %>
 
   </div>

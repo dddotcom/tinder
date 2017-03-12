@@ -107,10 +107,10 @@ $(document).ready(function(){
   $(".btn-next").click(function(e){
     e.preventDefault();
     var id = findGreatestZindex();
-    $( "#" + id ).hide( "slide", { direction: "up"  }, "slow", function() {
-      $(this).parent('.col-5').parent('.row').remove();
-      $("#" + id).remove();
-    });
+    // $( "#" + id ).hide( "slide", { direction: "up"  }, "slow", function() {
+    //   $(this).parent('.col-5').parent('.row').remove();
+    //   $("#" + id).remove();
+    // });
   });
 
   $(".btn-dislike-zoom").click(function(e){
@@ -204,6 +204,12 @@ $(document).ready(function(){
       $(pic).attr("src", data.picUrl);
 
     });
+  });
+
+  $(".get-tinder-plus").click(function(e){
+    e.preventDefault();
+    console.log("clicked");
+    $(".tinder-plus-alert").show();
   });
 
 });

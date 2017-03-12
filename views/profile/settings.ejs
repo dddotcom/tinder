@@ -1,9 +1,12 @@
+<div class="alert alert-danger tinder-plus-alert" role="alert">
+  Oh no! You were not able to purchase <strong>Tinder 4 Animals Plus</strong> :(
+</div>
+
 <div class="nav-bar-other">
   <h2>
     <a href="/profile" class="black"><i class="fa fa-angle-left" aria-hidden="true"></i> Settings</a>
   </h2>
 </div>
-
 
 <hr>
 <div class="container">
@@ -11,7 +14,11 @@
 
   <div class="row settings">
     <div class="col-8 offset-2">
-      <h2 class="text-center"><a href="#" class="red black btn btn-secondary">Get Tinder Plus</a></h2>
+      <h2 class="text-center">
+        <a href="#" class="red black btn btn-secondary" data-toggle="modal" data-target=".get-tinder-plus">
+          Get Tinder Plus
+        </a>
+    </h2>
       <br>
       <p><strong>Discovery Settings</strong></p>
       <p class="red"><strong>Show Me</strong></p>
@@ -49,6 +56,52 @@
     </div>
   </div>
 
+</div>
+
+<div class="modal fade get-tinder-plus" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content text-center">
+      <h3><strong>Get Tinder 4 Animals Plus</strong></h3>
+      <div class="text-center">
+          <img src="/images/tinder-plus.svg">
+      </div>
+      <i class="fa fa-repeat fa-3x yellow" aria-hidden="true"></i>
+      <h3><strong>Rewind Your Last Swipe</strong></h3>
+      <h4>Go back and swipe again</h4>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-4 text-center">
+          <div class="card">
+            <div class="card-block gray">
+              <h3 class="card-title"><strong>12</strong><br><small>months</small></h3>
+              <p class="card-text">$4000.59/mo</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <div class="card">
+            <div class="card-block red">
+              <h3 class="card-title"><strong>6</strong><br><small>months</small></h3>
+              <p class="card-text">$5000.84/mo</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 text-center">
+          <div class="card">
+            <div class="card-block gray">
+              <h3 class="card-title"><strong>1</strong><br><small>month</small></h3>
+              <p class="card-text">$9000.99/mo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="text-center btn btn-danger login-btn get-tinder-plus-btn"  data-toggle="modal" data-target=".get-tinder-plus">CONTINUE</button>
+
+    </div>
+  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
