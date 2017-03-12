@@ -3,28 +3,28 @@
   <h2>LOG IN</h2>
 </div>
 
-<div class="row">
-  <div class="col-xs-12 login-form">
-    <form method="POST" action="/auth/login">
-      <div class="form-group">
-        <label for="email">Email*: </label>
-        <input type="text" name="email" class="form-control" placeholder="Type your email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password*: </label>
-        <input type="password" name="password" class="form-control" placeholder="Type your password" required>
-      </div>
-      <input type="submit" value="LOGIN" class="submit-btn btn btn-danger">
-    </form>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 login-form">
+      <form method="POST" action="/auth/login">
+        <div class="form-group">
+          <label for="email">Email*: </label>
+          <input type="text" name="email" class="form-control" placeholder="Type your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password*: </label>
+          <input type="password" name="password" class="form-control" placeholder="Type your password" required>
+        </div>
+        <input type="submit" value="LOGIN" class="submit-btn btn btn-danger">
+      </form>
+    </div>
   </div>
 </div>
 
 <br>
 
-<div class="row">
-  <a href="/auth/facebook" class="btn btn-primary login-btn"><i class="fa fa-facebook-official fa-lg" aria-hidden="true"></i> &emsp; LOG IN WITH FACEBOOK</a>
-</div>
+<a href="/auth/facebook" class="btn btn-primary login-btn white">
+  LOG IN WITH FACEBOOK
+</a>
 
-<div class="container text-center">
-  <p>Don't have an account yet? <a href="/auth/signup">Create an account</a></p>
-</div>
+<p class="text-center">Don't have an account yet? <a href="/auth/signup">Create an account</a></p>

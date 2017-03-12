@@ -1,28 +1,28 @@
-<div class="container">
-  <div class="row nav-bar">
-    <div class="col-12 col-sm-4 text-center">
-        <a href="/profile" class="nav-btn btn btn-secondary"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i></a>
-    </div>
-    <div class="col-12 col-sm-4 text-center">
-      <a href="/potentials" class="nav-tinder btn btn-secondary">
-        <img src="/images/logo-white.png">
-      </a>
-    </div>
-    <div class="col-12 col-sm-4 text-center">
-      <a href="/chatroom" class="nav-btn btn btn-danger red-background"><p>...</p></a>
-    </div>
+<div class="row nav-bar">
+  <div class="col-12 col-sm-4 text-center">
+      <a href="/profile" class="nav-btn btn btn-secondary"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i></a>
+  </div>
+  <div class="col-12 col-sm-4 text-center">
+    <a href="/potentials" class="nav-tinder btn btn-secondary">
+      <img src="/images/logo-white.png">
+    </a>
+  </div>
+  <div class="col-12 col-sm-4 text-center">
+    <a href="/chatroom" class="nav-btn btn btn-danger red-background"><p>...</p></a>
   </div>
 </div>
+
 <br>
+
 <div class="container">
   <h2 class="red"><strong>Messages</strong></h2>
 
 <% matches.forEach(function(match){ %>
     <div class="row">
-      <div class="col-3">
-        <a href="/chatroom/<%=match.id%>"><img class="chatroom-pic" src=<%=match.profile_pics[0].url%>></a>
+      <div class="col-12 col-sm-3">
+        <a href="/chatroom/<%=match.id%>"><img class="chatroom-pic rounded-circle img-fluid" src=<%=match.profile_pics[0].url%>></a>
       </div>
-      <div class="col-9">
+      <div class="col-12 col-sm-9">
         <h3>
           <strong><%=match.name%></strong>
         </h3>

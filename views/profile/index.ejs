@@ -1,18 +1,17 @@
-<div class="container">
-  <div class="row nav-bar">
-    <div class="col-12 col-sm-4 text-center">
-        <a href="/profile" class="nav-btn btn btn-danger red-background"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i></a>
-    </div>
-    <div class="col-12 col-sm-4 text-center">
-      <a href="/potentials" class="nav-tinder btn btn-secondary">
-        <img src="/images/logo-white.png">
-      </a>
-    </div>
-    <div class="col-12 col-sm-4 text-center">
-      <a href="/chatroom" class="nav-btn btn btn-secondary"><p>...</p></a>
-    </div>
+<div class="row nav-bar">
+  <div class="col-12 col-sm-4 text-center">
+      <a href="/profile" class="nav-btn btn btn-danger red-background"><i class="fa fa-user-o fa-2x" aria-hidden="true"></i></a>
+  </div>
+  <div class="col-12 col-sm-4 text-center">
+    <a href="/potentials" class="nav-tinder btn btn-secondary">
+      <img src="/images/logo-white.png">
+    </a>
+  </div>
+  <div class="col-12 col-sm-4 text-center">
+    <a href="/chatroom" class="nav-btn btn btn-secondary"><p>...</p></a>
   </div>
 </div>
+
 <div class="container">
 
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -47,7 +46,7 @@
     </a>
   </div>
 
-  <a href="/profile/edit" class="btn btn-danger"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
+  <a href="/profile/edit" class="btn btn-danger rounded-circle"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i></a>
   <br><br>
 
   <div class="profile-content">
@@ -89,10 +88,10 @@
 
   <form method="POST" action="/profile/addInterest" class="form-group">
     <div class="form-group row">
-      <div class="col-11">
+      <div class="col-12 col-sm-11">
         <input type="text" name="interests" class="form-control form-control-lg" placeholder="Add more comma-separated interests">
       </div>
-      <div class="col-1">
+      <div class="col-12 col-sm-1">
         <button type="submit" class="btn btn-danger">
           <i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
         </button>
@@ -102,5 +101,5 @@
   </form>
 
   <hr>
-  <p><a href="/profile/settings">Settings</a></p>
+  <h5><a href="/profile/settings" class="red"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a></h5>
 </div>

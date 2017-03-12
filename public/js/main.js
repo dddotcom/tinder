@@ -107,10 +107,6 @@ $(document).ready(function(){
   $(".btn-next").click(function(e){
     e.preventDefault();
     var id = findGreatestZindex();
-    // $('#modal-match-' + id).modal({
-    //   backdrop: 'static',
-    //   keyboard: false
-    // });
     $( "#" + id ).hide( "slide", { direction: "up"  }, "slow", function() {
       $(this).parent('.col-5').parent('.row').remove();
       $("#" + id).remove();
@@ -146,6 +142,9 @@ $(document).ready(function(){
           keyboard: false
         });
       }
+      else if (!document.URL.endsWith('/potentials')){
+       window.location = "/potentials";
+      }
     });
   });
   $(".btn-superlike-zoom").click(function(e){
@@ -160,6 +159,9 @@ $(document).ready(function(){
           backdrop: 'static',
           keyboard: false
         });
+      }
+      else if (!document.URL.endsWith('/potentials')){
+       window.location = "/potentials";
       }
     });
   });

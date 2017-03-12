@@ -11,88 +11,98 @@
     <a href="/chatroom" class="nav-btn btn btn-secondary"><p>...</p></a>
   </div>
 </div>
-      <% var z = 0; potentialUsers.forEach(function(potentialUser){ %>
-        <div class="row justify-content-center">
-          <div class="col-5">
-            <div class="potential-img potential-user" id="<%=potentialUser.id%>" style="z-index:<%=z%>;">
-              <span class="like-text">LIKE</span>
-              <span class="nope-text">NOPE</span>
-              <span class="super-like-text blue">SUPER-LIKE</span>
-              <a href="/potentials/<%=potentialUser.id%>">
-                <img src=<%=potentialUser.profile_pics[0].url%>>
-              </a>
-              <p><strong><%=potentialUser.name%></strong>, <%=potentialUser.age%></p>
-              <% if(potentialUser.school){ %>
-                <p>Studies at <%= potentialUser.school %> </p>
-              <% } %>
-              <% if(potentialUser.work){ %>
-                <p>Works at <%= potentialUser.work %> </p>
-              <% } %>
-              <% if(!potentialUser.work && !potentialUser.school){ %>
-                <p>Does nothing</p>
-              <% } %>
-          </div>
-        </div>
-      </div>
-      <!-- MODal -->
-      <div id="modal-match-<%=potentialUser.id%>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-              <h1 class="match-text text-center white">It's a Match!</h1>
-              <h3 class="text-center white">You and <%= potentialUser.name %> have liked each other.</h3>
-            <div class="row text-center">
-              <div class="col-5 offset-1">
-                <img class="match-pic" src="<%= currentUser.profile_pics[0].url %>" class="text-left">
-              </div>
-              <div class="col-5">
-                <img class="match-pic" src="<%= potentialUser.profile_pics[0].url %>" class="text-left">
-              </div>
-            </div>
-            <br>
-            <div class="match">
-                <h2 class="text-center">
-                  <a href="/chatroom/<%= potentialUser.id %>" class="btn btn-danger">SEND A MESSAGE</a>
-                </h2>
-                <br>
-                <h2 class="text-center">
-                  <a href="/potentials" class="btn btn-transparent white">KEEP SWIPING</a>
-                </h2>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <% z+= 10; }); %>
-
-      <div class="row no-potentials">
-        <div class="col-12 text-center">
-          <p>Sorry, no more animals near you :( </p>
+<% var z = 10; potentialUsers.forEach(function(potentialUser){ %>
+  <div class="potential-card-row row justify-content-center">
+    <div class="col-4 align-self-center justify-content-center">
+      <div class="card potential-card potential-user" id="<%=potentialUser.id%>" style="z-index:<%=z%>;">
+        <span class="like-text">LIKE</span>
+        <span class="nope-text">NOPE</span>
+        <span class="super-like-text blue">SUPER-LIKE</span>
+        <a href="/potentials/<%=potentialUser.id%>">
+          <img class="card-img-top" src=<%=potentialUser.profile_pics[0].url%>>
+        </a>
+        <div class="card-block">
+          <h5 class="card-title">
+            <strong><%=potentialUser.name%></strong>, <%=potentialUser.age%>
+          </h5>
+          <p class="card-text">
+            <% if(potentialUser.school){ %>
+              Studies at <%= potentialUser.school %>
+              <br>
+            <% } %>
+            <% if(potentialUser.work){ %>
+              Works at <%= potentialUser.work %>
+            <% } %>
+            <% if(!potentialUser.work && !potentialUser.school){ %>
+              Does nothing
+            <% } %>
+          </p>
         </div>
       </div>
-
-      <div class="row tinder-controls">
-        <div class="col-4 offset-4">
-          <div class="row">
-            <div class="col-3 text-center">
-              <button class="btn btn-secondary btn-next">
-                <i class="fa fa-repeat fa-2x yellow" aria-hidden="true"></i>
-              </button>
-            </div>
-            <div class="col-3 text-center">
-              <button class="btn btn-secondary btn-dislike">
-                <i class="fa fa-times fa-2x red" aria-hidden="true"></i>
-              </button>
-            </div>
-            <div class="col-3 text-center">
-              <button class="btn btn-secondary btn-like">
-                <i class="fa fa-heart fa-2x green" aria-hidden="true"></i>
-              </button>
-            </div>
-            <div class="col-3 text-center">
-              <button class="btn btn-secondary btn-superlike">
-                <i class="fa fa-star fa-2x blue" aria-hidden="true"></i>
-              </button>
-            </div>
-          </div>
+  </div>
+</div>
+<!-- MODal -->
+<div id="modal-match-<%=potentialUser.id%>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <h1 class="match-text text-center white">It's a Match!</h1>
+        <h3 class="text-center white">You and <%= potentialUser.name %> have liked each other.</h3>
+      <div class="row text-center">
+        <div class="col-5 offset-1">
+          <img class="match-pic" src="<%= currentUser.profile_pics[0].url %>" class="text-left">
+        </div>
+        <div class="col-5">
+          <img class="match-pic" src="<%= potentialUser.profile_pics[0].url %>" class="text-left">
         </div>
       </div>
+      <br>
+      <div class="match">
+          <h2 class="text-center">
+            <a href="/chatroom/<%= potentialUser.id %>" class="btn btn-danger">SEND A MESSAGE</a>
+          </h2>
+          <br>
+          <h2 class="text-center">
+            <a href="/potentials" class="btn btn-transparent white">KEEP SWIPING</a>
+          </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% z+= 10; }); %>
+
+<div class="row no-potentials">
+  <div class="col align-self-center">
+    <p class="text-center">Sorry, no more animals near you :( </p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="row tinder-controls">
+    <div class="col-4 offset-4">
+      <div class="row">
+        <div class="col-3 text-center">
+          <button class="btn btn-secondary btn-next">
+            <i class="fa fa-repeat fa-2x yellow" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-3 text-center">
+          <button class="btn btn-secondary btn-dislike">
+            <i class="fa fa-times fa-2x red" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-3 text-center">
+          <button class="btn btn-secondary btn-like">
+            <i class="fa fa-heart fa-2x green" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-3 text-center">
+          <button class="btn btn-secondary btn-superlike">
+            <i class="fa fa-star fa-2x blue" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
