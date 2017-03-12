@@ -206,7 +206,7 @@ $(document).ready(function(){
     });
   });
 
-  $(".get-tinder-plus").click(function(e){
+  $(".get-tinder-plus-btn").click(function(e){
     e.preventDefault();
     console.log("clicked");
     $(".tinder-plus-alert").show();
