@@ -6,8 +6,7 @@ $(".nope-text").css('visibility', 'visible').hide();
 $(".super-like-text").css('visibility', 'visible').hide();
 
 $(document).ready(function(){
-  console.log("DOM ready");
-
+  hideTinderControls();
 
   $('.carousel').carousel({
     interval: false
@@ -45,7 +44,6 @@ $(document).ready(function(){
           url: "/potentials/dislike/" + id,
           data: $(this).serialize(),
         }).done(function(){
-          console.log("done adding to dislikes!");
           if (!document.URL.endsWith('/potentials')){
               window.location = "/potentials";
           }
@@ -67,8 +65,6 @@ $(document).ready(function(){
           url: "/potentials/like/" + id,
           data: $(this).serialize(),
         }).done(function(data){
-          console.log("done adding to likes!");
-          console.log(data);
           if(data.redirect){
               window.location = data.redirect;
           }
@@ -93,7 +89,6 @@ $(document).ready(function(){
           url: "/potentials/superlike/" + id,
           data: $(this).serialize(),
         }).done(function(data){
-          console.log("done adding to likes as a superlike!");
           if(data.redirect){
               window.location = data.redirect;
           }
@@ -128,11 +123,9 @@ $(document).ready(function(){
           window.location = "/potentials";
       }
     });
-    console.log("dislike from potentials/show" + potentialId);
   });
 
   $(".btn-like-zoom").click(function(e){
-    console.log("like from potentials/show");
     var potentialId = $(".potential-user").attr('id');
     $.ajax({
       method: "POST",
@@ -148,7 +141,6 @@ $(document).ready(function(){
     });
   });
   $(".btn-superlike-zoom").click(function(e){
-    console.log("superlike from potentials/show");
     var potentialId = $(".potential-user").attr('id');
     $.ajax({
       method: "POST",
@@ -198,7 +190,6 @@ $(document).ready(function(){
       url: url,
     }).done(function(data){
       //set url to new url
-      console.log(data);
       var pic = $(".profile-pic-" + data.picId)[0];
       $(pic).attr("src", data.picUrl);
 
@@ -223,6 +214,11 @@ function findGreatestZindex(){
     index_highest_id = $(".potential-user").attr('id');
   }
 
-  console.log("index_highest_id " + index_highest_id );
   return index_highest_id;
+}
+
+function hideTinderControls(){
+  if(document.referrer.includes("chatroom") && window.location.href.includes("potentials")){
+      $(".tinder-controls-zoom").hide();
+  }
 }
