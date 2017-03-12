@@ -77,3 +77,31 @@
     </div>
   </div>
 </div>
+
+<!-- MODal -->
+<div id="modal-match-<%=potentialUser.id%>" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <h1 class="match-text text-center white">It's a Match!</h1>
+        <h3 class="text-center white">You and <%= potentialUser.name %> have liked each other.</h3>
+      <div class="row text-center">
+        <div class="col-5 offset-1">
+          <img class="match-pic" src="<%= currentUser.profile_pics[0].url %>" class="text-left">
+        </div>
+        <div class="col-5">
+          <img class="match-pic" src="<%= potentialUser.profile_pics[0].url %>" class="text-left">
+        </div>
+      </div>
+      <br>
+      <div class="match">
+          <h2 class="text-center">
+            <a href="/chatroom/<%= potentialUser.id %>" class="btn btn-danger">SEND A MESSAGE</a>
+          </h2>
+          <br>
+          <h2 class="text-center">
+            <a href="/potentials" class="btn btn-transparent white">KEEP SWIPING</a>
+          </h2>
+      </div>
+    </div>
+  </div>
+</div>

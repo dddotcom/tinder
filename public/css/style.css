@@ -7,6 +7,27 @@ body {
   margin: 30px auto;
 }
 
+.modal-content {
+  background-color: transparent;
+  border: none;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-show {
+  background-color: #F8F8F8;
+}
+
+.btn-transparent {
+  border: 5px #bd362f solid;
+}
+
+.btn-transparent:hover {
+  color: lightGray;
+}
+
 .carousel {
   margin: 3em auto;
 }

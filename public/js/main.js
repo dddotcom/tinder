@@ -6,6 +6,7 @@ $(".nope-text").css('visibility', 'visible').hide();
 $(".super-like-text").css('visibility', 'visible').hide();
 
 $(document).ready(function(){
+
   hideTinderControls();
 
   $('.carousel').carousel({
@@ -65,11 +66,14 @@ $(document).ready(function(){
           url: "/potentials/like/" + id,
           data: $(this).serialize(),
         }).done(function(data){
-          if(data.redirect){
-              window.location = data.redirect;
-          }
-           else if (!document.URL.endsWith('/potentials')){
-              window.location = "/potentials";
+          if(data.match){
+            if(document.URL.endsWith('/potentials#_=_') || document.URL.endsWith('/potentials')){
+              console.log('show modal #modal-match-' + id );
+              $('#modal-match-' + id).modal({
+                backdrop: 'static',
+                keyboard: false
+              });
+            }
           }
         });
       });
@@ -89,11 +93,11 @@ $(document).ready(function(){
           url: "/potentials/superlike/" + id,
           data: $(this).serialize(),
         }).done(function(data){
-          if(data.redirect){
-              window.location = data.redirect;
-          }
-           else if (!document.URL.endsWith('/potentials')){
-              window.location = "/potentials";
+          if(data.match){
+            $('#modal-match-' + id).modal({
+              backdrop: 'static',
+              keyboard: false
+            });
           }
         });
       });
@@ -103,6 +107,10 @@ $(document).ready(function(){
   $(".btn-next").click(function(e){
     e.preventDefault();
     var id = findGreatestZindex();
+    // $('#modal-match-' + id).modal({
+    //   backdrop: 'static',
+    //   keyboard: false
+    // });
     $( "#" + id ).hide( "slide", { direction: "up"  }, "slow", function() {
       $(this).parent('.col-5').parent('.row').remove();
       $("#" + id).remove();
@@ -132,11 +140,11 @@ $(document).ready(function(){
       url: "/potentials/like/" + potentialId,
       data: $(this).serialize(),
     }).done(function(data){
-      if(data.redirect){
-          window.location = data.redirect;
-      }
-       else if (!document.URL.endsWith('/potentials')){
-          window.location = "/potentials";
+      if(data.match){
+        $('#modal-match-' + potentialId).modal({
+          backdrop: 'static',
+          keyboard: false
+        });
       }
     });
   });
@@ -147,11 +155,11 @@ $(document).ready(function(){
       url: "/potentials/superlike/" + potentialId,
       data: $(this).serialize(),
     }).done(function(data){
-      if(data.redirect){
-          window.location = data.redirect;
-      }
-       else if (!document.URL.endsWith('/potentials')){
-          window.location = "/potentials";
+      if(data.match){
+        $('#modal-match-' + potentialId).modal({
+          backdrop: 'static',
+          keyboard: false
+        });
       }
     });
   });
