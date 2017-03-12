@@ -349,7 +349,7 @@ height: 25em;
   background-color: #F8F8F8;
 }
 
-@media (max-width: 414px) {
+@media (min-width: 361px) and (max-width: 414px) {
   .potential-card-row {
     width: 43vw;
   }
@@ -362,6 +362,9 @@ height: 25em;
   .potential-card {
     min-height: 450px;
   }
+}
+
+@media (max-width:414px){
 
   .chatroom-pic {
     width: 73px;
@@ -387,5 +390,20 @@ height: 25em;
 
   .login-btn {
     width: 70%;
+  }
+}
+
+@media (max-width: 360px) {
+  .potential-card-row {
+    width: 24vw;
+  }
+
+  .potential-card img {
+    height: 300px;
+    width: 300px;
+  }
+
+  .potential-card {
+    min-height: 450px;
   }
 }
