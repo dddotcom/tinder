@@ -231,6 +231,11 @@ Attributes
 Associations
 (none)
 
+## User Stories
+1.  Joshua is interested in dating, but he feels like when he puts his pictures online people judge him. He wants a way to connect with potential partners through anonymized dating.
+1. Catrina is a cat, looking for a dog to be her best friend. She only knows other cats, and her life has been kind of stale lately and she's looking to spice things up.
+1. Spike, a social butterfly, has always wanted to meet new potential partners and other pets to get along with. 
+
 ## Node Modules used
 * express
 * ejs
