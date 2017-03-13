@@ -234,7 +234,7 @@ Associations
 ## User Stories
 1.  Joshua is interested in dating, but he feels like when he puts his pictures online people judge him. He wants a way to connect with potential partners through anonymized dating.
 1. Catrina is a cat, looking for a dog to be her best friend. She only knows other cats, and her life has been kind of stale lately and she's looking to spice things up.
-1. Spike, a social butterfly, has always wanted to meet new potential partners and other pets to get along with. 
+1. Scooby is a dog always traveling the country with his family. Part of an older generation, Scooby needs an app allows him to connect with potential partners along his travels
 
 ## Node Modules used
 * express
