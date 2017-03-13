@@ -73,7 +73,7 @@ Associations
 
 #### Users Table
 | id        | email| password|  name|  age|  school|  work|  about|  animalId|  interestedIn|
-| ------------- |:-------------:|
+| ------------- |:-------------:| ------------- |:-------------:| ------------- |:-------------:| ------------- |:-------------:| ------------- |:-------------:|
 | 1  | hello@kitty.com | (hashed)| Hello Kitty| 7 | Cat University| | I am a cat going to school| 1 | 2|
 | 2  | doge@doge.com | (hashed)| Doge| 10 | | H&R Block | I am a dog that loves doing taxes| 2 | 1|
 | 3  | jake@dog.com | (hashed)| Jake the Dog| 12 | | | I am already with Lady R| 2 | 1|
