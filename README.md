@@ -2,9 +2,6 @@
 A remake of the Tinder dating app, with a spin.
 Inspired by [Tinder for Bananas](https://tinderforbananas.com/)
 
-## Screen shots
-(Coming soon)
-
 ## Mock ups
 
 ### Login
@@ -252,3 +249,35 @@ Associations
 * dotenv
 * passport-facebook
 * giphy-api
+
+## Interesting problems
+* Match Logic
+  * How can we tell if the current user has "matched" with a potential user?
+    * Both users must have an entry for the other in the `likes` table
+    * For example:
+      * User 1 likes User 2. An entry is created in the `likes` table that the user with id 1 has liked the user with id 2
+      * User 2 likes User 1. An entry is created in the `likes` table that the user with id 2 has liked the user with id 1
+      * After creating a like/superlike entry in the database, the app checks if both users have liked each other. In order to do this, a query to the database would look some thing like:
+
+    ```SQL
+    SELECT * FROM likes WHERE userId = 1 AND userIdLiked = 2;
+    SELECT * FROM likes where userId = 2 AND userIdLiked =1;
+    ```
+    If both queries return a row from the database, then we are certain that a "match" between user 1 and user 2 has occured;
+
+* Display Users Logic
+  * How can we present the current user with ONLY the  potential users that meet the following criteria:
+    1. Users they have not seen before
+    1. Users that match the animal they are interested in
+
+
+  * In order to do this, a query to the database would look something like:
+
+  ```SQL
+  SELECT userIdLiked FROM likes WHERE userId = currentUser.id;
+  SELECT userIdDisliked FROM likes WHERE userId = currentUser.id;
+  --combine this list of ids the user has liked/disliked into a single array of integers
+  -- lets say this array contains the ids (2,3,4,5,6) along with the current user's id (1)
+  SELECT * FROM users WHERE id NOT IN (1,2,3,4,5,6) AND animalId = currentUser.interestedIn;
+  --this would return the appropriate list of users
+  ```
